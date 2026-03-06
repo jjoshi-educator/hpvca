@@ -1,0 +1,1390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HPV Cancers Alliance</title>
+    <style>
+        @page {
+            size: 11in 72in;
+            margin: 0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background: #FFFFFF;
+            color: #1A2530;
+            width: 11in;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        /* ==================== HEADER ==================== */
+        .utility-bar {
+            background: #5C4080;
+            padding: 10px 80px;
+            display: flex;
+            justify-content: flex-end;
+            gap: 32px;
+            font-size: 13px;
+        }
+        
+        .utility-bar a {
+            color: rgba(255,255,255,0.85);
+        }
+        
+        .utility-bar a:hover {
+            color: white;
+        }
+        
+        .utility-bar .highlight {
+            color: #FFEEE5;
+            font-weight: 600;
+        }
+        
+        .header {
+            padding: 20px 80px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: white;
+            border-bottom: 1px solid #E8E0F0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-shrink: 0;
+        }
+        
+        .logo-mark {
+            width: 44px;
+            height: 44px;
+            background: #7B5BA6;
+            border-radius: 10px;
+            position: relative;
+            flex-shrink: 0;
+        }
+        
+        .logo-mark::before {
+            content: '';
+            position: absolute;
+            width: 22px;
+            height: 22px;
+            border: 2.5px solid white;
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        .logo-text {
+            font-size: 20px;
+            font-weight: 700;
+            color: #1A2530;
+            white-space: nowrap;
+        }
+        
+        .logo-text span {
+            color: #7B5BA6;
+        }
+        
+        .main-nav {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+        
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+        }
+        
+        .nav-link {
+            font-size: 15px;
+            color: #2D3E50;
+            font-weight: 500;
+            padding: 8px 0;
+            border-bottom: 2px solid transparent;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+        
+        .nav-link:hover {
+            color: #7B5BA6;
+            border-bottom-color: #7B5BA6;
+        }
+        
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-left: 16px;
+            padding-left: 24px;
+            border-left: 1px solid #E8E0F0;
+        }
+        
+        .nav-cta {
+            background: #7B5BA6;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            transition: background 0.2s;
+            white-space: nowrap;
+        }
+        
+        .nav-cta:hover {
+            background: #5C4080;
+        }
+        
+        .nav-donate {
+            color: #5C4080;
+            font-weight: 600;
+            font-size: 14px;
+            white-space: nowrap;
+        }
+        
+        .nav-donate:hover {
+            color: #7B5BA6;
+        }
+        
+        /* ==================== HERO ==================== */
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 560px;
+        }
+        
+        .hero-content {
+            padding: 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: #FAFAFA;
+        }
+        
+        .hero-eyebrow {
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: #7B5BA6;
+            margin-bottom: 16px;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 700;
+            line-height: 1.1;
+            color: #1A2530;
+            margin-bottom: 24px;
+            letter-spacing: -0.02em;
+        }
+        
+        .hero-lead {
+            font-size: 19px;
+            line-height: 1.7;
+            color: #4A5568;
+            margin-bottom: 32px;
+            max-width: 480px;
+        }
+        
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #7B5BA6;
+            color: white;
+            padding: 16px 32px;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            transition: background 0.2s;
+            width: fit-content;
+        }
+        
+        .hero-cta:hover {
+            background: #5C4080;
+        }
+        
+        .hero-cta svg {
+            width: 20px;
+            height: 20px;
+        }
+        
+        .hero-secondary {
+            margin-top: 16px;
+            color: #5C4080;
+            font-size: 15px;
+            font-weight: 500;
+        }
+        
+        .hero-secondary:hover {
+            text-decoration: underline;
+        }
+        
+        .hero-image {
+            background: linear-gradient(135deg, #E8E0F0 0%, #D4C8E5 100%);
+        }
+        
+        /* ==================== IMPACT STATS ==================== */
+        .impact-bar {
+            background: #5C4080;
+            padding: 48px 80px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 48px;
+        }
+        
+        .impact-stat {
+            text-align: center;
+            color: white;
+        }
+        
+        .impact-number {
+            font-size: 48px;
+            font-weight: 700;
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+        
+        .impact-label {
+            font-size: 14px;
+            opacity: 0.85;
+            line-height: 1.4;
+        }
+        
+        /* ==================== MISSION ==================== */
+        .mission {
+            padding: 100px 80px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+        
+        .mission-content {
+            max-width: 480px;
+        }
+        
+        .section-eyebrow {
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: #7B5BA6;
+            margin-bottom: 16px;
+        }
+        
+        .mission h2 {
+            font-size: 40px;
+            font-weight: 700;
+            line-height: 1.15;
+            color: #1A2530;
+            margin-bottom: 24px;
+            letter-spacing: -0.02em;
+        }
+        
+        .mission p {
+            font-size: 17px;
+            line-height: 1.8;
+            color: #4A5568;
+            margin-bottom: 16px;
+        }
+        
+        .mission-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #5C4080;
+            font-size: 15px;
+            font-weight: 600;
+            margin-top: 16px;
+        }
+        
+        .mission-link:hover {
+            gap: 12px;
+        }
+        
+        .mission-image {
+            background: linear-gradient(135deg, #E8E0F0 0%, #F3EFF8 100%);
+            border-radius: 16px;
+            height: 400px;
+        }
+        
+        /* ==================== WHAT IS HPV ==================== */
+        .info-section {
+            background: #F9F7FC;
+            padding: 100px 80px;
+        }
+        
+        .info-header {
+            max-width: 600px;
+            margin-bottom: 60px;
+        }
+        
+        .info-header h2 {
+            font-size: 40px;
+            font-weight: 700;
+            line-height: 1.15;
+            color: #1A2530;
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+        }
+        
+        .info-header p {
+            font-size: 18px;
+            line-height: 1.7;
+            color: #4A5568;
+        }
+        
+        .cancer-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 20px;
+            margin-bottom: 60px;
+        }
+        
+        .cancer-card {
+            background: white;
+            border-radius: 12px;
+            padding: 24px 20px;
+            text-align: center;
+            border: 1px solid #E8E0F0;
+            transition: all 0.2s;
+        }
+        
+        .cancer-card:hover {
+            border-color: #7B5BA6;
+            box-shadow: 0 8px 24px rgba(123, 91, 166, 0.1);
+        }
+        
+        .cancer-bar {
+            width: 6px;
+            background: #7B5BA6;
+            border-radius: 3px;
+            margin: 0 auto 16px;
+        }
+        
+        .cancer-card:nth-child(1) .cancer-bar { height: 60px; background: #5C4080; }
+        .cancer-card:nth-child(2) .cancer-bar { height: 55px; background: #6D4D94; }
+        .cancer-card:nth-child(3) .cancer-bar { height: 35px; background: #7B5BA6; }
+        .cancer-card:nth-child(4) .cancer-bar { height: 22px; background: #9B7BC6; }
+        .cancer-card:nth-child(5) .cancer-bar { height: 16px; background: #B8A5D3; }
+        .cancer-card:nth-child(6) .cancer-bar { height: 12px; background: #D4C8E5; }
+        
+        .cancer-name {
+            font-size: 14px;
+            font-weight: 600;
+            color: #1A2530;
+            margin-bottom: 4px;
+        }
+        
+        .cancer-stat {
+            font-size: 12px;
+            color: #6B7280;
+        }
+        
+        .info-narrative {
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
+            border-left: 4px solid #7B5BA6;
+        }
+        
+        .info-narrative p {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #1A2530;
+        }
+        
+        .info-narrative strong {
+            color: #5C4080;
+            font-weight: 600;
+        }
+        
+        .info-source {
+            margin-top: 16px;
+            font-size: 13px;
+            color: #6B7280;
+        }
+        
+        /* ==================== QUESTIONS ==================== */
+        .questions-section {
+            padding: 100px 80px;
+            background: white;
+        }
+        
+        .questions-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 48px;
+        }
+        
+        .questions-header h2 {
+            font-size: 36px;
+            font-weight: 700;
+            color: #1A2530;
+            letter-spacing: -0.02em;
+        }
+        
+        .questions-header a {
+            color: #5C4080;
+            font-size: 15px;
+            font-weight: 600;
+        }
+        
+        .questions-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+        
+        .question-card {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 24px 28px;
+            background: #F9F7FC;
+            border-radius: 8px;
+            border: 1px solid transparent;
+            transition: all 0.2s;
+        }
+        
+        .question-card:hover {
+            background: white;
+            border-color: #7B5BA6;
+            box-shadow: 0 4px 16px rgba(123, 91, 166, 0.1);
+        }
+        
+        .question-text {
+            font-size: 16px;
+            font-weight: 500;
+            color: #1A2530;
+        }
+        
+        .question-arrow {
+            color: #7B5BA6;
+            font-size: 20px;
+            transition: transform 0.2s;
+        }
+        
+        .question-card:hover .question-arrow {
+            transform: translateX(4px);
+        }
+        
+        /* ==================== TOOL SECTION ==================== */
+        .tool-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+        
+        .tool-content {
+            background: #5C4080;
+            padding: 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            color: white;
+        }
+        
+        .tool-eyebrow {
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 16px;
+        }
+        
+        .tool-content h2 {
+            font-size: 40px;
+            font-weight: 700;
+            line-height: 1.15;
+            margin-bottom: 20px;
+            letter-spacing: -0.02em;
+        }
+        
+        .tool-content h2 em {
+            font-style: normal;
+            color: #FFEEE5;
+        }
+        
+        .tool-content p {
+            font-size: 18px;
+            line-height: 1.7;
+            opacity: 0.9;
+            margin-bottom: 32px;
+            max-width: 420px;
+        }
+        
+        .tool-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: white;
+            color: #5C4080;
+            padding: 16px 32px;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            width: fit-content;
+            transition: all 0.2s;
+        }
+        
+        .tool-cta:hover {
+            background: #FFEEE5;
+        }
+        
+        .tool-visual {
+            background: linear-gradient(135deg, #7B5BA6 0%, #9B7BC6 100%);
+            padding: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .tool-preview {
+            background: rgba(255,255,255,0.1);
+            border-radius: 16px;
+            padding: 40px;
+            width: 100%;
+            max-width: 360px;
+        }
+        
+        .tool-preview-header {
+            text-align: center;
+            padding-bottom: 24px;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+            margin-bottom: 24px;
+            color: white;
+        }
+        
+        .tool-preview-header strong {
+            display: block;
+            font-size: 18px;
+            margin-bottom: 4px;
+        }
+        
+        .tool-preview-header span {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+        
+        .tool-steps {
+            color: white;
+        }
+        
+        .tool-step {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+        
+        .tool-step:last-child {
+            margin-bottom: 0;
+        }
+        
+        .step-num {
+            width: 28px;
+            height: 28px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        
+        .step-text {
+            font-size: 14px;
+            line-height: 1.5;
+            padding-top: 4px;
+        }
+        
+        /* ==================== SURVIVOR STORY ==================== */
+        .story-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+        
+        .story-image {
+            background: linear-gradient(135deg, #D4C8E5 0%, #E8E0F0 100%);
+            min-height: 480px;
+        }
+        
+        .story-content {
+            padding: 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: #FAFAFA;
+        }
+        
+        .story-content .section-eyebrow {
+            color: #E8845A;
+        }
+        
+        .story-quote {
+            font-size: 28px;
+            font-weight: 600;
+            line-height: 1.4;
+            color: #1A2530;
+            margin-bottom: 32px;
+            letter-spacing: -0.01em;
+        }
+        
+        .story-attribution {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .attribution-avatar {
+            width: 56px;
+            height: 56px;
+            background: #E8E0F0;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: 600;
+            color: #5C4080;
+        }
+        
+        .attribution-info strong {
+            display: block;
+            font-size: 16px;
+            color: #1A2530;
+            margin-bottom: 2px;
+        }
+        
+        .attribution-info span {
+            font-size: 14px;
+            color: #6B7280;
+        }
+        
+        .story-link {
+            color: #5C4080;
+            font-size: 15px;
+            font-weight: 600;
+        }
+        
+        .story-link:hover {
+            text-decoration: underline;
+        }
+        
+        /* ==================== FOUNDERS ==================== */
+        .founders-section {
+            padding: 100px 80px;
+            background: white;
+        }
+        
+        .founders-header {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 60px;
+        }
+        
+        .founders-header h2 {
+            font-size: 40px;
+            font-weight: 700;
+            line-height: 1.15;
+            color: #1A2530;
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+        }
+        
+        .founders-header p {
+            font-size: 18px;
+            line-height: 1.7;
+            color: #4A5568;
+        }
+        
+        .founders-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 32px;
+            margin-bottom: 60px;
+        }
+        
+        .founder-card {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            background: #F9F7FC;
+            border-radius: 16px;
+            overflow: hidden;
+        }
+        
+        .founder-image {
+            background: linear-gradient(135deg, #D4C8E5 0%, #E8E0F0 100%);
+        }
+        
+        .founder-info {
+            padding: 32px;
+        }
+        
+        .founder-name {
+            font-size: 22px;
+            font-weight: 700;
+            color: #1A2530;
+            margin-bottom: 4px;
+        }
+        
+        .founder-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #7B5BA6;
+            margin-bottom: 16px;
+        }
+        
+        .founder-bio {
+            font-size: 15px;
+            line-height: 1.7;
+            color: #4A5568;
+        }
+        
+        .partners-section {
+            background: #F9F7FC;
+            border-radius: 12px;
+            padding: 32px 40px;
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+        
+        .partners-label {
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #5C4080;
+            white-space: nowrap;
+        }
+        
+        .partners-list {
+            font-size: 14px;
+            color: #4A5568;
+            line-height: 1.8;
+        }
+        
+        /* ==================== NEWS ==================== */
+        .news-section {
+            padding: 100px 80px;
+            background: #FAFAFA;
+        }
+        
+        .news-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 48px;
+        }
+        
+        .news-header h2 {
+            font-size: 36px;
+            font-weight: 700;
+            color: #1A2530;
+            letter-spacing: -0.02em;
+        }
+        
+        .news-header a {
+            color: #5C4080;
+            font-size: 15px;
+            font-weight: 600;
+        }
+        
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+        
+        .news-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #E8E0F0;
+            transition: all 0.2s;
+        }
+        
+        .news-card:hover {
+            border-color: #7B5BA6;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+        }
+        
+        .news-image {
+            height: 180px;
+            background: linear-gradient(135deg, #E8E0F0 0%, #F3EFF8 100%);
+        }
+        
+        .news-card:nth-child(2) .news-image {
+            background: linear-gradient(135deg, #FDE8DC 0%, #F3EFF8 100%);
+        }
+        
+        .news-card:nth-child(3) .news-image {
+            background: linear-gradient(135deg, #D4C8E5 0%, #E8E0F0 100%);
+        }
+        
+        .news-content {
+            padding: 24px;
+        }
+        
+        .news-tag {
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #7B5BA6;
+            margin-bottom: 12px;
+        }
+        
+        .news-card h3 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #1A2530;
+            line-height: 1.3;
+            margin-bottom: 8px;
+        }
+        
+        .news-card p {
+            font-size: 15px;
+            color: #6B7280;
+            line-height: 1.6;
+        }
+        
+        /* ==================== CTA ==================== */
+        .final-cta {
+            padding: 100px 80px;
+            background: linear-gradient(135deg, #F9F7FC 0%, #E8E0F0 100%);
+            text-align: center;
+        }
+        
+        .final-cta h2 {
+            font-size: 40px;
+            font-weight: 700;
+            color: #1A2530;
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+        }
+        
+        .final-cta p {
+            font-size: 18px;
+            color: #4A5568;
+            margin-bottom: 36px;
+            max-width: 480px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+        }
+        
+        .btn {
+            padding: 16px 32px;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+        
+        .btn-primary {
+            background: #F4A27F;
+            color: #1A2530;
+        }
+        
+        .btn-primary:hover {
+            background: #E8845A;
+        }
+        
+        .btn-secondary {
+            background: white;
+            color: #5C4080;
+            border: 2px solid #7B5BA6;
+        }
+        
+        .btn-secondary:hover {
+            background: #7B5BA6;
+            color: white;
+        }
+        
+        /* ==================== FOOTER ==================== */
+        .footer {
+            padding: 60px 80px 40px;
+            background: #F9F7FC;
+            border-top: 1px solid #E8E0F0;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr repeat(4, 1fr);
+            gap: 48px;
+            margin-bottom: 48px;
+        }
+        
+        .footer-brand p {
+            font-size: 14px;
+            color: #6B7280;
+            margin-top: 16px;
+            line-height: 1.7;
+            max-width: 280px;
+        }
+        
+        .footer-social {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+        }
+        
+        .social-link {
+            width: 36px;
+            height: 36px;
+            background: #E8E0F0;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #5C4080;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+        
+        .social-link:hover {
+            background: #7B5BA6;
+            color: white;
+        }
+        
+        .footer-nav h4 {
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: #1A2530;
+            margin-bottom: 20px;
+        }
+        
+        .footer-nav ul {
+            list-style: none;
+        }
+        
+        .footer-nav li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-nav a {
+            font-size: 14px;
+            color: #6B7280;
+            transition: color 0.2s;
+        }
+        
+        .footer-nav a:hover {
+            color: #5C4080;
+        }
+        
+        .footer-bottom {
+            padding-top: 32px;
+            border-top: 1px solid #E8E0F0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .footer-copy {
+            font-size: 13px;
+            color: #6B7280;
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: 24px;
+        }
+        
+        .footer-links a {
+            font-size: 13px;
+            color: #6B7280;
+        }
+        
+        .footer-links a:hover {
+            color: #5C4080;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Utility Bar -->
+    <div class="utility-bar">
+        <a href="#" class="highlight">Just diagnosed? Start here →</a>
+        <a href="#">En Español</a>
+        <a href="#">For Healthcare Providers</a>
+        <a href="#">Search</a>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <a href="/" class="logo">
+            <div class="logo-mark"></div>
+            <div class="logo-text"><span>HPV</span> Cancers Alliance</div>
+        </a>
+        <nav class="main-nav">
+            <div class="nav-links">
+                <a href="#" class="nav-link">About HPV</a>
+                <a href="#" class="nav-link">Prevention</a>
+                <a href="#" class="nav-link">Treatment</a>
+                <a href="#" class="nav-link">Resources</a>
+            </div>
+            <div class="nav-actions">
+                <a href="#" class="nav-cta">HPV Next Steps</a>
+                <a href="#" class="nav-donate">Donate</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-eyebrow">Education · Inclusivity · Collaboration · Action</div>
+            <h1>HPV causes 5% of all cancers. Almost all are preventable.</h1>
+            <p class="hero-lead">If everyone received the HPV vaccine, we could prevent ~1 million cancer diagnoses and nearly 500,000 deaths every year.</p>
+            <a href="#" class="hero-cta">
+                Find your next steps
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            <a href="#" class="hero-secondary">Learn about HPV →</a>
+        </div>
+        <div class="hero-image"></div>
+    </section>
+
+    <!-- Impact Stats -->
+    <section class="impact-bar">
+        <div class="impact-stat">
+            <div class="impact-number">5%</div>
+            <div class="impact-label">of all cancers worldwide caused by HPV</div>
+        </div>
+        <div class="impact-stat">
+            <div class="impact-number">~1M</div>
+            <div class="impact-label">cancer diagnoses preventable each year</div>
+        </div>
+        <div class="impact-stat">
+            <div class="impact-number">90%</div>
+            <div class="impact-label">of HPV cancers preventable with vaccination</div>
+        </div>
+        <div class="impact-stat">
+            <div class="impact-number">6</div>
+            <div class="impact-label">types of cancer caused by HPV</div>
+        </div>
+    </section>
+
+    <!-- Mission -->
+    <section class="mission">
+        <div class="mission-content">
+            <div class="section-eyebrow">Who We Are</div>
+            <h2>No one navigates HPV alone.</h2>
+            <p>HPV Cancers Alliance is a national nonprofit committed to reducing the burden of HPV through comprehensive education, prevention, and advocacy.</p>
+            <p>We offer trusted, evidence-based information on HPV infection, vaccination, and cancer prevention—alongside emerging research and updates on HPV-related cancer treatment.</p>
+            <a href="#" class="mission-link">Learn more about our mission →</a>
+        </div>
+        <div class="mission-image"></div>
+    </section>
+
+    <!-- What is HPV -->
+    <section class="info-section">
+        <div class="info-header">
+            <div class="section-eyebrow">Understanding HPV</div>
+            <h2>HPV causes 6 types of cancer</h2>
+            <p>Human papillomavirus (HPV) is the most common sexually transmitted infection. Nearly all sexually active people will get HPV at some point—but in some cases, it can lead to cancer.</p>
+        </div>
+        
+        <div class="cancer-grid">
+            <div class="cancer-card">
+                <div class="cancer-bar"></div>
+                <div class="cancer-name">Cervical</div>
+                <div class="cancer-stat">~14,000/yr</div>
+            </div>
+            <div class="cancer-card">
+                <div class="cancer-bar"></div>
+                <div class="cancer-name">Head & Neck</div>
+                <div class="cancer-stat">~19,000/yr</div>
+            </div>
+            <div class="cancer-card">
+                <div class="cancer-bar"></div>
+                <div class="cancer-name">Anal</div>
+                <div class="cancer-stat">~9,000/yr</div>
+            </div>
+            <div class="cancer-card">
+                <div class="cancer-bar"></div>
+                <div class="cancer-name">Vulvar</div>
+                <div class="cancer-stat">~6,500/yr</div>
+            </div>
+            <div class="cancer-card">
+                <div class="cancer-bar"></div>
+                <div class="cancer-name">Vaginal</div>
+                <div class="cancer-stat">~1,400/yr</div>
+            </div>
+            <div class="cancer-card">
+                <div class="cancer-bar"></div>
+                <div class="cancer-name">Penile</div>
+                <div class="cancer-stat">~2,200/yr</div>
+            </div>
+        </div>
+        
+        <div class="info-narrative">
+            <p><strong>80%</strong> of sexually active adults will get HPV in their lifetime—most will never know it. In <strong>90%</strong> of cases, the infection clears on its own within two years. But for the remaining <strong>10%</strong>, persistent infection can lead to cancer—sometimes decades later. The good news: the HPV vaccine prevents <strong>90%</strong> of these cancers, and it's now approved for adults up to age <strong>45</strong>.</p>
+            <div class="info-source">Source: CDC, American Cancer Society, 2024</div>
+        </div>
+    </section>
+
+    <!-- Questions -->
+    <section class="questions-section">
+        <div class="questions-header">
+            <h2>Common questions about HPV</h2>
+            <a href="#">View all FAQs →</a>
+        </div>
+        
+        <div class="questions-grid">
+            <a href="#" class="question-card">
+                <span class="question-text">Should I get the HPV vaccine?</span>
+                <span class="question-arrow">→</span>
+            </a>
+            <a href="#" class="question-card">
+                <span class="question-text">I'm over 26. Is it too late?</span>
+                <span class="question-arrow">→</span>
+            </a>
+            <a href="#" class="question-card">
+                <span class="question-text">How do I know if I have HPV?</span>
+                <span class="question-arrow">→</span>
+            </a>
+            <a href="#" class="question-card">
+                <span class="question-text">What screening do I need?</span>
+                <span class="question-arrow">→</span>
+            </a>
+            <a href="#" class="question-card">
+                <span class="question-text">I tested positive. Now what?</span>
+                <span class="question-arrow">→</span>
+            </a>
+            <a href="#" class="question-card">
+                <span class="question-text">Is the vaccine safe?</span>
+                <span class="question-arrow">→</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- HPV Next Steps Tool -->
+    <section class="tool-section">
+        <div class="tool-content">
+            <div class="tool-eyebrow">Personalized Guidance</div>
+            <h2>Meet <em>HPV Next Steps</em></h2>
+            <p>A first-of-its-kind tool designed to support you in taking charge of your health. Answer 2-3 quick, anonymous questions and get tailored guidance. No guesswork, no confusion.</p>
+            <a href="#" class="tool-cta">
+                Start now — takes 2 minutes
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+        </div>
+        <div class="tool-visual">
+            <div class="tool-preview">
+                <div class="tool-preview-header">
+                    <strong>HPV Next Steps</strong>
+                    <span>Free & Anonymous</span>
+                </div>
+                <div class="tool-steps">
+                    <div class="tool-step">
+                        <div class="step-num">1</div>
+                        <div class="step-text">Answer 2-3 questions about age, sex, and vaccination status</div>
+                    </div>
+                    <div class="tool-step">
+                        <div class="step-num">2</div>
+                        <div class="step-text">Get personalized vaccination and screening recommendations</div>
+                    </div>
+                    <div class="tool-step">
+                        <div class="step-num">3</div>
+                        <div class="step-text">Share results with your healthcare provider</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Survivor Story -->
+    <section class="story-section">
+        <div class="story-image"></div>
+        <div class="story-content">
+            <div class="section-eyebrow">Survivor Story</div>
+            <p class="story-quote">"Getting cancer, especially one with the stigma of HPV, didn't hold me back—it lit a fire in me to educate, break barriers, and save lives."</p>
+            <div class="story-attribution">
+                <div class="attribution-avatar">LK</div>
+                <div class="attribution-info">
+                    <strong>Lillian Kreppel</strong>
+                    <span>Co-Founder & CEO, Anal Cancer Survivor</span>
+                </div>
+            </div>
+            <a href="#" class="story-link">Read Lillian's full story →</a>
+        </div>
+    </section>
+
+    <!-- Founders -->
+    <section class="founders-section">
+        <div class="founders-header">
+            <h2>Founded by survivors, driven by purpose</h2>
+            <p>HPV Cancers Alliance was founded to ensure no one faces an HPV diagnosis alone—and to break the stigma that keeps people silent.</p>
+        </div>
+        
+        <div class="founders-grid">
+            <div class="founder-card">
+                <div class="founder-image"></div>
+                <div class="founder-info">
+                    <div class="founder-name">Lillian Kreppel</div>
+                    <div class="founder-title">Co-Founder & CEO</div>
+                    <p class="founder-bio">Anal cancer survivor, public speaker, and entrepreneur. Lillian founded HPVCA to transform her experience into meaningful change for others.</p>
+                </div>
+            </div>
+            <div class="founder-card">
+                <div class="founder-image"></div>
+                <div class="founder-info">
+                    <div class="founder-name">Marcia Cross</div>
+                    <div class="founder-title">Co-Founder & Chair</div>
+                    <p class="founder-bio">Emmy-nominated actress and anal cancer survivor. Marcia is a powerful advocate for removing the stigma from HPV conversations.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="partners-section">
+            <div class="partners-label">Trusted Partners</div>
+            <p class="partners-list">Memorial Sloan Kettering · MD Anderson · UCSF · American Cancer Society · Prevent Cancer Foundation · National HPV Roundtable · CDC Division of Cancer Prevention · and 30+ more</p>
+        </div>
+    </section>
+
+    <!-- News -->
+    <section class="news-section">
+        <div class="news-header">
+            <h2>News & Events</h2>
+            <a href="#">View all →</a>
+        </div>
+        
+        <div class="news-grid">
+            <a href="#" class="news-card">
+                <div class="news-image"></div>
+                <div class="news-content">
+                    <div class="news-tag">Event</div>
+                    <h3>Soirée in the City 2026</h3>
+                    <p>Save the date: October 19th in New York City. Join us for our annual fundraising gala.</p>
+                </div>
+            </a>
+            <a href="#" class="news-card">
+                <div class="news-image"></div>
+                <div class="news-content">
+                    <div class="news-tag">Webinar</div>
+                    <h3>Emerging Science Series</h3>
+                    <p>Monthly webinars with leading researchers on HPV prevention and treatment advances.</p>
+                </div>
+            </a>
+            <a href="#" class="news-card">
+                <div class="news-image"></div>
+                <div class="news-content">
+                    <div class="news-tag">Resource</div>
+                    <h3>GI Provider Toolkit</h3>
+                    <p>Evidence-based guidance for gastroenterologists on HPV-related cancer screening.</p>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta">
+        <h2>Help us eliminate HPV cancers</h2>
+        <p>Your support funds education, prevention tools, and support services for patients and families.</p>
+        <div class="cta-buttons">
+            <a href="#" class="btn btn-primary">Donate now</a>
+            <a href="#" class="btn btn-secondary">Subscribe to newsletter</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="/" class="logo">
+                    <div class="logo-mark"></div>
+                    <div class="logo-text"><span>HPV</span> Cancers Alliance</div>
+                </a>
+                <p>Empowering individuals with knowledge about HPV and ensuring no one navigates alone.</p>
+                <div class="footer-social">
+                    <a href="#" class="social-link">f</a>
+                    <a href="#" class="social-link">in</a>
+                    <a href="#" class="social-link">X</a>
+                    <a href="#" class="social-link">▶</a>
+                </div>
+            </div>
+            
+            <nav class="footer-nav">
+                <h4>Learn</h4>
+                <ul>
+                    <li><a href="#">What is HPV?</a></li>
+                    <li><a href="#">HPV Myth Busters</a></li>
+                    <li><a href="#">Vaccination Facts</a></li>
+                    <li><a href="#">Screening Guidelines</a></li>
+                </ul>
+            </nav>
+            
+            <nav class="footer-nav">
+                <h4>Prevention</h4>
+                <ul>
+                    <li><a href="#">Stop HPV in its Tracks</a></li>
+                    <li><a href="#">After HPV Diagnosis</a></li>
+                    <li><a href="#">The ANCHOR Study</a></li>
+                </ul>
+            </nav>
+            
+            <nav class="footer-nav">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="#">Survivor Stories</a></li>
+                    <li><a href="#">Support Services</a></li>
+                    <li><a href="#">Self Advocacy</a></li>
+                </ul>
+            </nav>
+            
+            <nav class="footer-nav">
+                <h4>About</h4>
+                <ul>
+                    <li><a href="#">Our Mission</a></li>
+                    <li><a href="#">Leadership</a></li>
+                    <li><a href="#">Partners</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+        
+        <div class="footer-bottom">
+            <p class="footer-copy">© 2026 HPV Cancers Alliance · PO Box 23075, New York, NY 10023</p>
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Use</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
