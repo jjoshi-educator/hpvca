@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HPVCA — Science Illustration System</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --purple-deep: #3A1057;
+    --purple: #5E2585;
+    --purple-mid: #7B3BA8;
+    --purple-light: #A06AC4;
+    --lavender: #C9A4E2;
+    --lavender-soft: #E8D5F5;
+    --lavender-bg: #F5EEFB;
+    --white: #FFFFFF;
+    --gray-100: #F4F3F6;
+    --gray-400: #9E99A7;
+    --gray-500: #6E6878;
+    --gray-900: #1A1522;
+    --sans: 'Outfit', sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: var(--sans); color: var(--gray-900); background: var(--white); }
+
+  .page-header { padding: 60px 40px 40px; max-width: 1200px; margin: 0 auto; }
+  .page-header h1 { font-size: 2.4rem; font-weight: 800; letter-spacing: -0.03em; text-transform: uppercase; margin-bottom: 8px; }
+  .page-header p { color: var(--gray-500); font-size: 1rem; line-height: 1.6; max-width: 700px; }
+  .page-header .tag { display: inline-block; background: var(--lavender-bg); color: var(--purple); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; padding: 5px 12px; border-radius: 4px; margin-bottom: 14px; }
+
+  .grid { max-width: 1200px; margin: 0 auto; padding: 20px 40px 80px; display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+  .card { border: 1px solid #E8E6EC; overflow: hidden; }
+  .card.full { grid-column: 1 / -1; }
+  .card-visual { position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+  .card-visual.dark { background: var(--purple-deep); }
+  .card-visual.light { background: var(--lavender-bg); }
+  .card-visual.mid { background: linear-gradient(135deg, var(--purple) 0%, var(--purple-mid) 100%); }
+  .card-visual.white-bg { background: var(--white); }
+  .card-visual svg { display: block; width: 100%; }
+  .card-info { padding: 24px 28px; }
+  .card-info h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 4px; }
+  .card-info .use { font-size: 0.8rem; color: var(--purple); font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px; }
+  .card-info p { font-size: 0.88rem; color: var(--gray-500); line-height: 1.55; }
+
+  .style-notes { max-width: 1200px; margin: 0 auto; padding: 0 40px 80px; }
+  .style-notes h2 { font-size: 1.6rem; font-weight: 800; text-transform: uppercase; margin-bottom: 20px; letter-spacing: -0.02em; }
+  .notes-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .note-card { padding: 28px; background: var(--gray-100); }
+  .note-card h4 { font-size: 0.88rem; font-weight: 700; margin-bottom: 8px; color: var(--purple); }
+  .note-card p { font-size: 0.84rem; color: var(--gray-500); line-height: 1.6; }
+  .note-card .swatch { display: flex; gap: 6px; margin-top: 12px; }
+  .note-card .swatch span { width: 28px; height: 28px; border-radius: 4px; }
+
+  @media (max-width: 800px) {
+    .grid { grid-template-columns: 1fr; }
+    .card.full { grid-column: auto; }
+    .notes-grid { grid-template-columns: 1fr; }
+    .page-header, .grid, .style-notes { padding-left: 20px; padding-right: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <div class="tag">HPVCA Visual System</div>
+  <h1>Science Illustration Library</h1>
+  <p>Organic, biopharma-inspired illustrations for use across the HPVCA website, presentations, and print. Each graphic uses the HPVCA purple/lavender palette and follows a modern life-science visual language — soft cellular forms, molecular structures, flowing connection lines, and radial gradients.</p>
+</div>
+
+<div class="grid">
+
+  <!-- 1. HERO ILLUSTRATION — Full-width cellular landscape -->
+  <div class="card full">
+    <div class="card-visual dark">
+      <svg viewBox="0 0 1200 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Large organic cell bodies -->
+        <ellipse cx="180" cy="200" rx="160" ry="140" fill="url(#h1)" opacity="0.25"/>
+        <ellipse cx="500" cy="120" rx="120" ry="100" fill="url(#h2)" opacity="0.2"/>
+        <ellipse cx="800" cy="260" rx="180" ry="150" fill="url(#h3)" opacity="0.22"/>
+        <ellipse cx="1050" cy="150" rx="140" ry="120" fill="url(#h2)" opacity="0.15"/>
+        <ellipse cx="350" cy="320" rx="100" ry="80" fill="url(#h1)" opacity="0.15"/>
+        <!-- Cell nuclei -->
+        <circle cx="180" cy="190" r="35" fill="url(#h4)" opacity="0.35"/>
+        <circle cx="800" cy="250" r="45" fill="url(#h4)" opacity="0.3"/>
+        <circle cx="500" cy="115" r="25" fill="url(#h4)" opacity="0.25"/>
+        <!-- Molecular bond lines -->
+        <path d="M180 200 C300 160 400 140 500 120" stroke="url(#hline)" stroke-width="1.5" opacity="0.15"/>
+        <path d="M500 120 C600 180 700 220 800 260" stroke="url(#hline)" stroke-width="1.5" opacity="0.12"/>
+        <path d="M800 260 C880 220 960 190 1050 150" stroke="url(#hline)" stroke-width="1" opacity="0.1"/>
+        <path d="M180 200 C240 270 300 300 350 320" stroke="url(#hline)" stroke-width="1" opacity="0.1"/>
+        <!-- Protein particles -->
+        <circle cx="340" cy="160" r="6" fill="#C9A4E2" opacity="0.3"/>
+        <circle cx="650" cy="190" r="5" fill="#E8D5F5" opacity="0.25"/>
+        <circle cx="920" cy="210" r="7" fill="#A06AC4" opacity="0.2"/>
+        <circle cx="250" cy="260" r="4" fill="#E8D5F5" opacity="0.2"/>
+        <circle cx="600" cy="300" r="5" fill="#C9A4E2" opacity="0.15"/>
+        <circle cx="1000" cy="300" r="6" fill="#A06AC4" opacity="0.15"/>
+        <!-- Membrane texture — dashed arcs -->
+        <path d="M60 280 Q180 340 300 280" stroke="#C9A4E2" stroke-width="0.8" stroke-dasharray="4 6" opacity="0.12"/>
+        <path d="M700 100 Q800 60 900 100" stroke="#E8D5F5" stroke-width="0.6" stroke-dasharray="3 5" opacity="0.1"/>
+        <path d="M400 350 Q550 380 700 350" stroke="#A06AC4" stroke-width="0.6" stroke-dasharray="4 6" opacity="0.08"/>
+        <defs>
+          <radialGradient id="h1"><stop offset="0%" stop-color="#C9A4E2"/><stop offset="100%" stop-color="#5E2585" stop-opacity="0"/></radialGradient>
+          <radialGradient id="h2"><stop offset="0%" stop-color="#E8D5F5"/><stop offset="100%" stop-color="#7B3BA8" stop-opacity="0"/></radialGradient>
+          <radialGradient id="h3"><stop offset="0%" stop-color="#A06AC4"/><stop offset="100%" stop-color="#3A1057" stop-opacity="0"/></radialGradient>
+          <radialGradient id="h4"><stop offset="0%" stop-color="#E8D5F5" stop-opacity="0.6"/><stop offset="100%" stop-color="#5E2585" stop-opacity="0"/></radialGradient>
+          <linearGradient id="hline"><stop offset="0%" stop-color="white" stop-opacity="0"/><stop offset="50%" stop-color="white"/><stop offset="100%" stop-color="white" stop-opacity="0"/></linearGradient>
+        </defs>
+      </svg>
+    </div>
+    <div class="card-info">
+      <div class="use">Hero / Page Background</div>
+      <h3>Cellular Landscape</h3>
+      <p>Full-width illustration showing interconnected cells with nuclei, molecular bond lines, and floating protein particles. Use as hero background on dark purple, or as a decorative backdrop for major sections.</p>
+    </div>
+  </div>
+
+  <!-- 2. HPV VIRUS STRUCTURE — Abstract -->
+  <div class="card">
+    <div class="card-visual light" style="padding: 40px;">
+      <svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Outer capsid shell -->
+        <circle cx="200" cy="200" r="140" stroke="#5E2585" stroke-width="1.5" stroke-dasharray="6 4" opacity="0.2"/>
+        <circle cx="200" cy="200" r="120" stroke="#7B3BA8" stroke-width="1" opacity="0.15"/>
+        <!-- Pentameric capsomere arrangement (HPV structure) -->
+        <circle cx="200" cy="200" r="80" stroke="#A06AC4" stroke-width="0.8" opacity="0.2"/>
+        <!-- L1 protein subunits arranged radially -->
+        <circle cx="200" cy="100" r="22" fill="url(#v1)" opacity="0.5"/>
+        <circle cx="295" cy="155" r="22" fill="url(#v1)" opacity="0.45"/>
+        <circle cx="260" cy="260" r="22" fill="url(#v1)" opacity="0.4"/>
+        <circle cx="140" cy="260" r="22" fill="url(#v1)" opacity="0.45"/>
+        <circle cx="105" cy="155" r="22" fill="url(#v1)" opacity="0.5"/>
+        <!-- Inner ring -->
+        <circle cx="200" cy="150" r="14" fill="url(#v2)" opacity="0.35"/>
+        <circle cx="245" cy="195" r="14" fill="url(#v2)" opacity="0.3"/>
+        <circle cx="228" cy="245" r="14" fill="url(#v2)" opacity="0.28"/>
+        <circle cx="172" cy="245" r="14" fill="url(#v2)" opacity="0.3"/>
+        <circle cx="155" cy="195" r="14" fill="url(#v2)" opacity="0.35"/>
+        <!-- DNA core (circular genome) -->
+        <circle cx="200" cy="200" r="30" stroke="#5E2585" stroke-width="2" opacity="0.25"/>
+        <circle cx="200" cy="200" r="22" stroke="#7B3BA8" stroke-width="1.5" stroke-dasharray="3 3" opacity="0.2"/>
+        <circle cx="200" cy="200" r="8" fill="#5E2585" opacity="0.3"/>
+        <!-- Connection lines from core to capsomeres -->
+        <line x1="200" y1="170" x2="200" y2="122" stroke="#A06AC4" stroke-width="0.5" opacity="0.15"/>
+        <line x1="228" y1="190" x2="273" y2="165" stroke="#A06AC4" stroke-width="0.5" opacity="0.15"/>
+        <line x1="220" y1="220" x2="248" y2="248" stroke="#A06AC4" stroke-width="0.5" opacity="0.15"/>
+        <line x1="180" y1="220" x2="152" y2="248" stroke="#A06AC4" stroke-width="0.5" opacity="0.15"/>
+        <line x1="172" y1="190" x2="127" y2="165" stroke="#A06AC4" stroke-width="0.5" opacity="0.15"/>
+        <!-- Floating particles -->
+        <circle cx="320" cy="100" r="4" fill="#C9A4E2" opacity="0.3"/>
+        <circle cx="80" cy="300" r="5" fill="#E8D5F5" opacity="0.25"/>
+        <circle cx="340" cy="310" r="3" fill="#A06AC4" opacity="0.2"/>
+        <circle cx="70" cy="110" r="4" fill="#C9A4E2" opacity="0.2"/>
+        <defs>
+          <radialGradient id="v1"><stop offset="0%" stop-color="#7B3BA8"/><stop offset="100%" stop-color="#E8D5F5" stop-opacity="0.1"/></radialGradient>
+          <radialGradient id="v2"><stop offset="0%" stop-color="#A06AC4"/><stop offset="100%" stop-color="#F5EEFB" stop-opacity="0.1"/></radialGradient>
+        </defs>
+      </svg>
+    </div>
+    <div class="card-info">
+      <div class="use">Card Graphic / Section Art</div>
+      <h3>HPV Virus Structure (Abstract)</h3>
+      <p>Simplified representation of HPV's icosahedral capsid with L1 protein subunits and circular DNA genome. Scientific but approachable — not clinical. Use for "What is HPV?" cards or educational sections.</p>
+    </div>
+  </div>
+
+  <!-- 3. VACCINE / SHIELD CONCEPT -->
+  <div class="card">
+    <div class="card-visual white-bg" style="padding: 40px; border-bottom: 1px solid #E8E6EC;">
+      <svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Protective shield shape -->
+        <path d="M200 60 L320 120 L320 240 Q320 320 200 360 Q80 320 80 240 L80 120 Z" fill="url(#s1)" opacity="0.08" stroke="#5E2585" stroke-width="1.5" opacity="0.15"/>
+        <path d="M200 85 L300 135 L300 235 Q300 300 200 335 Q100 300 100 235 L100 135 Z" fill="url(#s2)" opacity="0.06"/>
+        <!-- Cellular defense — immune cells surrounding -->
+        <circle cx="200" cy="200" r="50" stroke="#7B3BA8" stroke-width="1" stroke-dasharray="4 4" opacity="0.2"/>
+        <!-- Antibody Y-shapes -->
+        <g opacity="0.35">
+          <path d="M180 170 L190 185 L200 170" stroke="#5E2585" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+          <line x1="190" y1="185" x2="190" y2="205" stroke="#5E2585" stroke-width="2.5" stroke-linecap="round"/>
+        </g>
+        <g opacity="0.3" transform="translate(30, 20)">
+          <path d="M180 170 L190 185 L200 170" stroke="#7B3BA8" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+          <line x1="190" y1="185" x2="190" y2="205" stroke="#7B3BA8" stroke-width="2.5" stroke-linecap="round"/>
+        </g>
+        <g opacity="0.25" transform="translate(-15, 35)">
+          <path d="M180 170 L190 185 L200 170" stroke="#A06AC4" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+          <line x1="190" y1="185" x2="190" y2="205" stroke="#A06AC4" stroke-width="2.5" stroke-linecap="round"/>
+        </g>
+        <!-- Checkmark in center -->
+        <path d="M182 200 L195 215 L225 180" stroke="#5E2585" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.4"/>
+        <!-- Blocked virus particles (faded, outside shield) -->
+        <circle cx="60" cy="100" r="12" stroke="#C9A4E2" stroke-width="1" stroke-dasharray="2 2" opacity="0.2"/>
+        <line x1="52" y1="92" x2="68" y2="108" stroke="#C9A4E2" stroke-width="1" opacity="0.2"/>
+        <circle cx="340" cy="300" r="10" stroke="#C9A4E2" stroke-width="1" stroke-dasharray="2 2" opacity="0.15"/>
+        <line x1="333" y1="293" x2="347" y2="307" stroke="#C9A4E2" stroke-width="1" opacity="0.15"/>
+        <circle cx="350" cy="90" r="8" stroke="#E8D5F5" stroke-width="0.8" stroke-dasharray="2 2" opacity="0.15"/>
+        <!-- Soft radial glow -->
+        <circle cx="200" cy="200" r="100" fill="url(#s3)" opacity="0.06"/>
+        <defs>
+          <linearGradient id="s1" x1="200" y1="60" x2="200" y2="360"><stop offset="0%" stop-color="#5E2585"/><stop offset="100%" stop-color="#C9A4E2"/></linearGradient>
+          <linearGradient id="s2" x1="200" y1="85" x2="200" y2="335"><stop offset="0%" stop-color="#E8D5F5"/><stop offset="100%" stop-color="#F5EEFB" stop-opacity="0"/></linearGradient>
+          <radialGradient id="s3"><stop offset="0%" stop-color="#5E2585"/><stop offset="100%" stop-color="#5E2585" stop-opacity="0"/></radialGradient>
+        </defs>
+      </svg>
+    </div>
+    <div class="card-info">
+      <div class="use">Card Graphic / Prevention Section</div>
+      <h3>Vaccine Protection (Shield + Antibodies)</h3>
+      <p>Shield form with antibody Y-shapes inside, blocked virus particles outside. Communicates protection without being literal. Use for vaccination/prevention cards and campaign materials.</p>
+    </div>
+  </div>
+
+  <!-- 4. SCREENING / DETECTION — Magnifying molecular view -->
+  <div class="card">
+    <div class="card-visual mid" style="padding: 40px;">
+      <svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Magnifying lens frame -->
+        <circle cx="180" cy="180" r="110" stroke="white" stroke-width="2" opacity="0.2"/>
+        <circle cx="180" cy="180" r="105" stroke="white" stroke-width="0.5" opacity="0.1"/>
+        <line x1="258" y1="258" x2="340" y2="340" stroke="white" stroke-width="3" stroke-linecap="round" opacity="0.2"/>
+        <!-- Inside the lens — revealed cellular detail -->
+        <circle cx="180" cy="180" r="100" fill="white" opacity="0.05"/>
+        <!-- Cells visible through the lens -->
+        <ellipse cx="150" cy="160" rx="40" ry="35" stroke="white" stroke-width="1" opacity="0.3"/>
+        <circle cx="150" cy="155" r="10" fill="white" opacity="0.1"/>
+        <ellipse cx="210" cy="200" rx="35" ry="30" stroke="white" stroke-width="1" opacity="0.25"/>
+        <circle cx="210" cy="195" r="8" fill="white" opacity="0.08"/>
+        <ellipse cx="170" cy="220" rx="28" ry="25" stroke="white" stroke-width="0.8" opacity="0.2"/>
+        <!-- Highlighted cell (detected) -->
+        <ellipse cx="200" cy="150" rx="25" ry="22" stroke="#E8D5F5" stroke-width="2" opacity="0.5"/>
+        <circle cx="200" cy="148" r="7" fill="#E8D5F5" opacity="0.3"/>
+        <!-- Pulse rings around detected cell -->
+        <circle cx="200" cy="150" r="32" stroke="#E8D5F5" stroke-width="0.8" opacity="0.2"/>
+        <circle cx="200" cy="150" r="42" stroke="#E8D5F5" stroke-width="0.5" opacity="0.1"/>
+        <!-- Outside lens — abstract blur -->
+        <circle cx="50" cy="80" r="20" fill="white" opacity="0.04"/>
+        <circle cx="340" cy="120" r="15" fill="white" opacity="0.03"/>
+        <circle cx="80" cy="320" r="25" fill="white" opacity="0.03"/>
+      </svg>
+    </div>
+    <div class="card-info">
+      <div class="use">Card Graphic / Screening Section</div>
+      <h3>Screening &amp; Early Detection</h3>
+      <p>Magnifying lens revealing cellular detail with a highlighted detected cell. Communicates precision, early detection, and care. Use for screening guidelines or diagnostic content.</p>
+    </div>
+  </div>
+
+  <!-- 5. DNA / MOLECULAR HELIX -->
+  <div class="card">
+    <div class="card-visual light" style="padding: 40px;">
+      <svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- DNA double helix — flowing, organic -->
+        <path d="M120 50 Q200 100 180 150 Q160 200 200 250 Q240 300 200 350 Q160 400 180 450" stroke="#5E2585" stroke-width="2" opacity="0.3" fill="none"/>
+        <path d="M280 50 Q200 100 220 150 Q240 200 200 250 Q160 300 200 350 Q240 400 220 450" stroke="#7B3BA8" stroke-width="2" opacity="0.25" fill="none"/>
+        <!-- Base pair rungs -->
+        <line x1="140" y1="85" x2="260" y2="85" stroke="#A06AC4" stroke-width="1" opacity="0.15"/>
+        <line x1="172" y1="125" x2="228" y2="125" stroke="#A06AC4" stroke-width="1.5" opacity="0.2"/>
+        <line x1="168" y1="165" x2="232" y2="165" stroke="#C9A4E2" stroke-width="1" opacity="0.15"/>
+        <line x1="185" y1="205" x2="215" y2="205" stroke="#A06AC4" stroke-width="1.5" opacity="0.2"/>
+        <line x1="192" y1="250" x2="208" y2="250" stroke="#5E2585" stroke-width="2" opacity="0.25"/>
+        <line x1="172" y1="290" x2="228" y2="290" stroke="#A06AC4" stroke-width="1.5" opacity="0.2"/>
+        <line x1="180" y1="330" x2="220" y2="330" stroke="#C9A4E2" stroke-width="1" opacity="0.15"/>
+        <line x1="168" y1="370" x2="232" y2="370" stroke="#A06AC4" stroke-width="1" opacity="0.12"/>
+        <!-- Nucleotide dots on strands -->
+        <circle cx="140" cy="85" r="5" fill="#5E2585" opacity="0.3"/>
+        <circle cx="260" cy="85" r="5" fill="#7B3BA8" opacity="0.25"/>
+        <circle cx="172" cy="125" r="6" fill="#5E2585" opacity="0.35"/>
+        <circle cx="228" cy="125" r="6" fill="#7B3BA8" opacity="0.3"/>
+        <circle cx="185" cy="205" r="5" fill="#A06AC4" opacity="0.3"/>
+        <circle cx="215" cy="205" r="5" fill="#A06AC4" opacity="0.25"/>
+        <circle cx="192" cy="250" r="7" fill="#5E2585" opacity="0.35"/>
+        <circle cx="208" cy="250" r="7" fill="#7B3BA8" opacity="0.3"/>
+        <circle cx="172" cy="290" r="5" fill="#5E2585" opacity="0.25"/>
+        <circle cx="228" cy="290" r="5" fill="#7B3BA8" opacity="0.2"/>
+        <!-- Ambient particles -->
+        <circle cx="80" cy="200" r="3" fill="#C9A4E2" opacity="0.2"/>
+        <circle cx="320" cy="150" r="4" fill="#E8D5F5" opacity="0.2"/>
+        <circle cx="90" cy="340" r="3" fill="#A06AC4" opacity="0.15"/>
+        <circle cx="310" cy="300" r="5" fill="#E8D5F5" opacity="0.15"/>
+        <circle cx="60" cy="100" r="4" fill="#C9A4E2" opacity="0.12"/>
+      </svg>
+    </div>
+    <div class="card-info">
+      <div class="use">Section Art / Research Pages</div>
+      <h3>DNA Double Helix</h3>
+      <p>Flowing organic helix with base-pair rungs and nucleotide dots. Not rigid/mechanical — uses curves and varying opacity for a living, breathing quality. Use for research, genomics, or "emerging science" content.</p>
+    </div>
+  </div>
+
+  <!-- 6. CONNECTED COMMUNITY — Network/support -->
+  <div class="card">
+    <div class="card-visual dark" style="padding: 40px;">
+      <svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Human-shaped nodes — abstracted as circles with smaller head circles -->
+        <!-- Central node -->
+        <circle cx="200" cy="190" r="28" fill="url(#n1)" opacity="0.4"/>
+        <circle cx="200" cy="160" r="12" fill="url(#n1)" opacity="0.5"/>
+        <!-- Surrounding nodes -->
+        <circle cx="100" cy="140" r="20" fill="url(#n2)" opacity="0.3"/>
+        <circle cx="100" cy="118" r="9" fill="url(#n2)" opacity="0.35"/>
+        <circle cx="300" cy="140" r="20" fill="url(#n2)" opacity="0.3"/>
+        <circle cx="300" cy="118" r="9" fill="url(#n2)" opacity="0.35"/>
+        <circle cx="120" cy="280" r="20" fill="url(#n2)" opacity="0.25"/>
+        <circle cx="120" cy="258" r="9" fill="url(#n2)" opacity="0.3"/>
+        <circle cx="280" cy="280" r="20" fill="url(#n2)" opacity="0.25"/>
+        <circle cx="280" cy="258" r="9" fill="url(#n2)" opacity="0.3"/>
+        <circle cx="200" cy="330" r="18" fill="url(#n2)" opacity="0.2"/>
+        <circle cx="200" cy="310" r="8" fill="url(#n2)" opacity="0.25"/>
+        <!-- Connection lines -->
+        <line x1="200" y1="190" x2="100" y2="140" stroke="#C9A4E2" stroke-width="1" opacity="0.2"/>
+        <line x1="200" y1="190" x2="300" y2="140" stroke="#C9A4E2" stroke-width="1" opacity="0.2"/>
+        <line x1="200" y1="190" x2="120" y2="280" stroke="#C9A4E2" stroke-width="1" opacity="0.15"/>
+        <line x1="200" y1="190" x2="280" y2="280" stroke="#C9A4E2" stroke-width="1" opacity="0.15"/>
+        <line x1="200" y1="190" x2="200" y2="330" stroke="#C9A4E2" stroke-width="1" opacity="0.12"/>
+        <line x1="100" y1="140" x2="120" y2="280" stroke="#A06AC4" stroke-width="0.5" opacity="0.1"/>
+        <line x1="300" y1="140" x2="280" y2="280" stroke="#A06AC4" stroke-width="0.5" opacity="0.1"/>
+        <line x1="120" y1="280" x2="200" y2="330" stroke="#A06AC4" stroke-width="0.5" opacity="0.08"/>
+        <line x1="280" y1="280" x2="200" y2="330" stroke="#A06AC4" stroke-width="0.5" opacity="0.08"/>
+        <!-- Pulse/glow around central figure -->
+        <circle cx="200" cy="180" r="50" stroke="#E8D5F5" stroke-width="0.8" opacity="0.1"/>
+        <circle cx="200" cy="180" r="70" stroke="#E8D5F5" stroke-width="0.5" opacity="0.06"/>
+        <!-- Small signal dots along connections -->
+        <circle cx="150" cy="165" r="3" fill="#E8D5F5" opacity="0.25"/>
+        <circle cx="250" cy="165" r="3" fill="#E8D5F5" opacity="0.25"/>
+        <circle cx="160" cy="235" r="2.5" fill="#C9A4E2" opacity="0.2"/>
+        <circle cx="240" cy="235" r="2.5" fill="#C9A4E2" opacity="0.2"/>
+        <defs>
+          <radialGradient id="n1"><stop offset="0%" stop-color="#E8D5F5"/><stop offset="100%" stop-color="#7B3BA8" stop-opacity="0.2"/></radialGradient>
+          <radialGradient id="n2"><stop offset="0%" stop-color="#C9A4E2"/><stop offset="100%" stop-color="#5E2585" stop-opacity="0.1"/></radialGradient>
+        </defs>
+      </svg>
+    </div>
+    <div class="card-info">
+      <div class="use">About / Community / Advocacy</div>
+      <h3>Connected Community Network</h3>
+      <p>Abstract human figures connected in a support network. Central node (patient/survivor) surrounded by community. Use for "About Us," advocacy pages, or "no one navigates HPV alone" messaging.</p>
+    </div>
+  </div>
+
+</div>
+
+<!-- Style Guide Notes -->
+<div class="style-notes">
+  <h2>Illustration Style Guide</h2>
+  <div class="notes-grid">
+    <div class="note-card">
+      <h4>Visual Language</h4>
+      <p>Modern biopharma illustration: organic cellular forms, molecular structures, and flowing connection lines. Soft radial gradients, not sharp geometry. Everything feels alive and in motion — representing biological processes and hope.</p>
+    </div>
+    <div class="note-card">
+      <h4>Color Palette</h4>
+      <p>Always use the HPVCA purple/lavender spectrum. Layer opacities (5%–35%) for depth. White accents on dark backgrounds; purple accents on light backgrounds.</p>
+      <div class="swatch">
+        <span style="background:#3A1057;"></span>
+        <span style="background:#5E2585;"></span>
+        <span style="background:#7B3BA8;"></span>
+        <span style="background:#A06AC4;"></span>
+        <span style="background:#C9A4E2;"></span>
+        <span style="background:#E8D5F5;"></span>
+        <span style="background:#F5EEFB;"></span>
+      </div>
+    </div>
+    <div class="note-card">
+      <h4>Do / Don't</h4>
+      <p><strong>Do:</strong> Use soft ellipses, dashed paths, radial glows, low-opacity layers. Suggest science without literal diagrams.<br><br><strong>Don't:</strong> Use sharp corners, neon colors, cartoon-style icons, stock clipart, or overly clinical/cold imagery.</p>
+    </div>
+    <div class="note-card">
+      <h4>Where to Use</h4>
+      <p><strong>Cellular Landscape:</strong> Hero backgrounds, page headers<br><strong>HPV Structure:</strong> "What is HPV?" content<br><strong>Shield:</strong> Vaccination/prevention pages<br><strong>Magnifier:</strong> Screening sections<br><strong>DNA Helix:</strong> Research, webinars<br><strong>Network:</strong> About, community, advocacy</p>
+    </div>
+    <div class="note-card">
+      <h4>Implementation</h4>
+      <p>All illustrations are inline SVG — zero file weight, infinitely scalable, and editable in any code editor. Colors reference CSS variables for easy brand updates. Can be exported as SVG files for use in presentations, print, or Canva.</p>
+    </div>
+    <div class="note-card">
+      <h4>Photography Pairing</h4>
+      <p>Illustrations complement (don't replace) photography. Layer them behind founder portraits, use as card backgrounds alongside community photos, or as standalone graphics for science content where photography isn't available.</p>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
