@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HPVCA Website Redesign v3 - Radical Simplification</title>
+    <style>
+        @page {
+            size: 11in 48in;
+            margin: 0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background: #FFFFFF;
+            color: #1A2530;
+            width: 11in;
+            line-height: 1.7;
+        }
+        
+        /* ==================== 
+           DESIGN PRINCIPLES APPLIED:
+           
+           TUFTE:
+           - Typography IS the design (no boxes, minimal color)
+           - Data integrated into prose
+           - Comparative data, not isolated numbers
+           - Maximum data-ink ratio
+           
+           NIELSEN:
+           - Question-based navigation (user mental model)
+           - Progressive disclosure
+           - Single primary action per viewport
+           - Clear system status
+           ==================== */
+        
+        /* ==================== 
+           HEADER: Question-based navigation
+           Users think in questions, not categories
+           ==================== */
+        
+        .header {
+            padding: 16px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #E8E0F0;
+            position: relative;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+        
+        .logo-mark {
+            width: 36px;
+            height: 36px;
+            background: #7B5BA6;
+            border-radius: 8px;
+            position: relative;
+        }
+        
+        .logo-mark::before {
+            content: '';
+            position: absolute;
+            width: 18px;
+            height: 18px;
+            border: 2px solid white;
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        .logo-text {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1A2530;
+        }
+        
+        .logo-text span {
+            color: #7B5BA6;
+        }
+        
+        /* NIELSEN: Question-based nav matches user mental model */
+        .main-nav {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+        
+        .nav-link {
+            font-size: 15px;
+            color: #2D3E50;
+            text-decoration: none;
+            padding: 8px 0;
+            border-bottom: 2px solid transparent;
+        }
+        
+        .nav-link:hover {
+            color: #7B5BA6;
+            border-bottom-color: #7B5BA6;
+        }
+        
+        .nav-cta {
+            background: #7B5BA6;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+        }
+        
+        .nav-donate {
+            color: #7B5BA6;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        /* Crisis link - always visible, Nielsen: error prevention */
+        .crisis-bar {
+            background: #5C4080;
+            padding: 10px 60px;
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            font-size: 13px;
+        }
+        
+        .crisis-bar a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        .crisis-bar a:first-child {
+            font-weight: 600;
+            color: #FFEEE5;
+        }
+        
+        /* ==================== 
+           HERO: One message, one number, one action
+           TUFTE: Integrate data into narrative
+           NIELSEN: Single primary action
+           ==================== */
+        
+        .hero {
+            padding: 80px 60px;
+            max-width: 900px;
+        }
+        
+        .hero h1 {
+            font-size: 52px;
+            font-weight: 700;
+            line-height: 1.15;
+            color: #1A2530;
+            margin-bottom: 24px;
+        }
+        
+        /* TUFTE: Data integrated into headline, not separate */
+        .hero h1 .data {
+            color: #7B5BA6;
+        }
+        
+        .hero-lead {
+            font-size: 22px;
+            line-height: 1.6;
+            color: #2D3E50;
+            margin-bottom: 32px;
+            max-width: 720px;
+        }
+        
+        /* NIELSEN: Single clear action */
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #7B5BA6;
+            color: white;
+            padding: 16px 32px;
+            border-radius: 4px;
+            font-size: 17px;
+            font-weight: 600;
+            text-decoration: none;
+        }
+        
+        .hero-secondary {
+            margin-left: 24px;
+            color: #5C4080;
+            font-size: 17px;
+            text-decoration: underline;
+        }
+        
+        /* ==================== 
+           TUFTE: Comparative data visualization
+           Show relationships, not isolated numbers
+           ==================== */
+        
+        .data-story {
+            padding: 60px;
+            background: #F9F7FC;
+            border-top: 1px solid #E8E0F0;
+            border-bottom: 1px solid #E8E0F0;
+        }
+        
+        .data-story-inner {
+            max-width: 900px;
+        }
+        
+        .data-story h2 {
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #7B5BA6;
+            margin-bottom: 24px;
+        }
+        
+        /* TUFTE: Sparkline-style inline data */
+        .data-narrative {
+            font-size: 20px;
+            line-height: 1.8;
+            color: #1A2530;
+        }
+        
+        .data-narrative strong {
+            color: #5C4080;
+            font-weight: 700;
+        }
+        
+        /* TUFTE: Small multiples - cancer types with relative scale */
+        .cancer-breakdown {
+            margin-top: 40px;
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 2px;
+        }
+        
+        .cancer-bar {
+            text-align: center;
+        }
+        
+        .cancer-bar-fill {
+            background: #7B5BA6;
+            margin-bottom: 8px;
+            border-radius: 2px 2px 0 0;
+        }
+        
+        .cancer-bar:nth-child(1) .cancer-bar-fill { height: 100px; } /* Cervical - most common */
+        .cancer-bar:nth-child(2) .cancer-bar-fill { height: 70px; background: #9B7BC6; } /* Head/Neck */
+        .cancer-bar:nth-child(3) .cancer-bar-fill { height: 45px; background: #B8A5D3; } /* Anal */
+        .cancer-bar:nth-child(4) .cancer-bar-fill { height: 25px; background: #B8A5D3; } /* Vulvar */
+        .cancer-bar:nth-child(5) .cancer-bar-fill { height: 20px; background: #D4C8E5; } /* Vaginal */
+        .cancer-bar:nth-child(6) .cancer-bar-fill { height: 15px; background: #D4C8E5; } /* Penile */
+        
+        .cancer-bar-label {
+            font-size: 12px;
+            color: #2D3E50;
+            line-height: 1.3;
+        }
+        
+        .data-footnote {
+            margin-top: 16px;
+            font-size: 12px;
+            color: #5A6A7A;
+        }
+        
+        /* ==================== 
+           NIELSEN: Progressive disclosure
+           Start with questions, reveal answers on demand
+           ==================== */
+        
+        .questions-section {
+            padding: 60px;
+        }
+        
+        .questions-section h2 {
+            font-size: 32px;
+            font-weight: 700;
+            color: #1A2530;
+            margin-bottom: 12px;
+        }
+        
+        .questions-section > p {
+            font-size: 18px;
+            color: #5A6A7A;
+            margin-bottom: 40px;
+        }
+        
+        .question-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+        
+        .question-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 20px 24px;
+            background: #F9F7FC;
+            border-radius: 4px;
+            text-decoration: none;
+            color: #1A2530;
+            border-left: 3px solid transparent;
+            transition: all 0.15s;
+        }
+        
+        .question-item:hover {
+            background: white;
+            border-left-color: #7B5BA6;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        
+        .question-item span {
+            font-size: 17px;
+            font-weight: 500;
+        }
+        
+        .question-item::after {
+            content: '→';
+            margin-left: auto;
+            color: #7B5BA6;
+            font-size: 18px;
+        }
+        
+        /* ==================== 
+           TOOL: Clear process, visible status
+           NIELSEN: System status visibility
+           ==================== */
+        
+        .tool-section {
+            padding: 60px;
+            background: #5C4080;
+            color: white;
+        }
+        
+        .tool-inner {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        
+        .tool-section h2 {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+        
+        .tool-section h2 em {
+            font-style: normal;
+            color: #FFEEE5;
+        }
+        
+        .tool-section p {
+            font-size: 18px;
+            opacity: 0.9;
+            margin-bottom: 24px;
+            line-height: 1.7;
+        }
+        
+        .tool-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: white;
+            color: #5C4080;
+            padding: 14px 28px;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+        }
+        
+        /* NIELSEN: Visible process steps */
+        .tool-process {
+            background: rgba(255,255,255,0.1);
+            border-radius: 8px;
+            padding: 32px;
+        }
+        
+        .tool-process-title {
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            opacity: 0.8;
+            margin-bottom: 24px;
+        }
+        
+        .process-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+        
+        .process-step:last-child {
+            margin-bottom: 0;
+        }
+        
+        .step-num {
+            width: 28px;
+            height: 28px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        
+        .step-content strong {
+            display: block;
+            font-size: 15px;
+            margin-bottom: 2px;
+        }
+        
+        .step-content span {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+        
+        /* ==================== 
+           WHO WE ARE: Credibility through specificity
+           TUFTE: Specific > general
+           ==================== */
+        
+        .about-section {
+            padding: 60px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            border-bottom: 1px solid #E8E0F0;
+        }
+        
+        .about-section h2 {
+            font-size: 32px;
+            font-weight: 700;
+            color: #1A2530;
+            margin-bottom: 20px;
+        }
+        
+        .about-section p {
+            font-size: 17px;
+            color: #2D3E50;
+            line-height: 1.8;
+            margin-bottom: 16px;
+        }
+        
+        /* TUFTE: Specific credentials, not generic claims */
+        .founders-row {
+            display: flex;
+            gap: 32px;
+            margin-top: 32px;
+        }
+        
+        .founder {
+            flex: 1;
+        }
+        
+        .founder-name {
+            font-size: 16px;
+            font-weight: 700;
+            color: #1A2530;
+            margin-bottom: 4px;
+        }
+        
+        .founder-title {
+            font-size: 14px;
+            color: #5C4080;
+            margin-bottom: 8px;
+        }
+        
+        .founder-bio {
+            font-size: 14px;
+            color: #5A6A7A;
+            line-height: 1.6;
+        }
+        
+        /* Partners - specific names, not vague claims */
+        .partners {
+            background: #F9F7FC;
+            padding: 32px;
+            border-radius: 4px;
+        }
+        
+        .partners h3 {
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #5C4080;
+            margin-bottom: 16px;
+        }
+        
+        .partners-list {
+            font-size: 14px;
+            color: #2D3E50;
+            line-height: 1.8;
+        }
+        
+        /* ==================== 
+           NEWS: Minimal, functional
+           TUFTE: Only what's necessary
+           ==================== */
+        
+        .news-section {
+            padding: 60px;
+        }
+        
+        .news-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 32px;
+        }
+        
+        .news-header h2 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1A2530;
+        }
+        
+        .news-header a {
+            font-size: 14px;
+            color: #5C4080;
+        }
+        
+        .news-list {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+        
+        .news-item {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .news-item:hover h3 {
+            color: #5C4080;
+        }
+        
+        .news-date {
+            font-size: 13px;
+            color: #7B5BA6;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .news-item h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1A2530;
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+        
+        .news-item p {
+            font-size: 14px;
+            color: #5A6A7A;
+            line-height: 1.5;
+        }
+        
+        /* ==================== 
+           CTA: One action, clear value
+           NIELSEN: Single primary action
+           ==================== */
+        
+        .final-cta {
+            padding: 80px 60px;
+            background: #F9F7FC;
+            text-align: center;
+            border-top: 1px solid #E8E0F0;
+        }
+        
+        .final-cta h2 {
+            font-size: 32px;
+            font-weight: 700;
+            color: #1A2530;
+            margin-bottom: 12px;
+        }
+        
+        .final-cta p {
+            font-size: 18px;
+            color: #5A6A7A;
+            margin-bottom: 32px;
+        }
+        
+        .final-cta .cta-primary {
+            background: #F4A27F;
+            color: #1A2530;
+            padding: 16px 36px;
+            border-radius: 4px;
+            font-size: 17px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .final-cta .cta-secondary {
+            margin-left: 24px;
+            color: #5C4080;
+            font-size: 16px;
+        }
+        
+        /* ==================== 
+           FOOTER: Functional, compressed
+           TUFTE: Maximum information, minimum ink
+           ==================== */
+        
+        .footer {
+            padding: 40px 60px;
+            background: white;
+            border-top: 1px solid #E8E0F0;
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr;
+            gap: 40px;
+            font-size: 14px;
+            color: #5A6A7A;
+        }
+        
+        .footer-brand p {
+            margin-top: 12px;
+            line-height: 1.6;
+        }
+        
+        .footer-nav-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+        
+        .footer-nav h4 {
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #1A2530;
+            margin-bottom: 12px;
+        }
+        
+        .footer-nav ul {
+            list-style: none;
+        }
+        
+        .footer-nav li {
+            margin-bottom: 8px;
+        }
+        
+        .footer-nav a {
+            color: #5A6A7A;
+            text-decoration: none;
+        }
+        
+        .footer-nav a:hover {
+            color: #5C4080;
+        }
+        
+        .footer-contact {
+            text-align: right;
+        }
+        
+        .footer-contact p {
+            margin-bottom: 12px;
+            line-height: 1.5;
+        }
+        
+        .social-row {
+            display: flex;
+            justify-content: flex-end;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+        
+        .social-link {
+            width: 28px;
+            height: 28px;
+            background: #E8E0F0;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #5C4080;
+            font-size: 11px;
+            font-weight: 600;
+            text-decoration: none;
+        }
+        
+        .footer-bottom {
+            grid-column: 1 / -1;
+            padding-top: 24px;
+            border-top: 1px solid #E8E0F0;
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+        }
+        
+        .footer-bottom a {
+            color: #5A6A7A;
+            text-decoration: none;
+            margin-left: 24px;
+        }
+        
+        /* ==================== 
+           ANNOTATIONS
+           ==================== */
+        
+        .annotation {
+            background: #FFFBEB;
+            border-left: 4px solid #F4A27F;
+            padding: 16px 24px;
+            margin: 16px 60px;
+            font-size: 13px;
+        }
+        
+        .annotation-title {
+            font-weight: 700;
+            color: #5C4080;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 4px;
+        }
+        
+        .annotation p {
+            color: #2D3E50;
+            line-height: 1.5;
+        }
+        
+        .annotation code {
+            background: #F3EFF8;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ANNOTATION: Design Philosophy -->
+    <div class="annotation">
+        <div class="annotation-title">V3 Design Philosophy</div>
+        <p><strong>Tufte:</strong> Typography IS the design. Data woven into prose. Comparative visualization. No decorative elements.<br>
+        <strong>Nielsen:</strong> Question-based navigation. Progressive disclosure. One primary action per section. Crisis paths always visible.</p>
+    </div>
+
+    <!-- Crisis Bar - Always visible -->
+    <div class="crisis-bar">
+        <a href="#">Just diagnosed? Start here →</a>
+        <a href="#">En Español</a>
+        <a href="#">For Healthcare Providers</a>
+        <a href="#">Search</a>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <a href="/" class="logo">
+            <div class="logo-mark"></div>
+            <div class="logo-text"><span>HPV</span> Cancers Alliance</div>
+        </a>
+        <nav class="main-nav">
+            <a href="#" class="nav-link">What is HPV?</a>
+            <a href="#" class="nav-link">Am I at risk?</a>
+            <a href="#" class="nav-link">How do I prevent it?</a>
+            <a href="#" class="nav-link">I've been diagnosed</a>
+            <a href="#" class="nav-cta">Check My Risk</a>
+            <a href="#" class="nav-donate">Donate</a>
+        </nav>
+    </header>
+    
+    <!-- ANNOTATION -->
+    <div class="annotation">
+        <div class="annotation-title">Change: Question-Based Navigation</div>
+        <p><strong>Before:</strong> <code>What is HPV? | Prevention | Treatments | Resources | About</code><br>
+        <strong>After:</strong> <code>What is HPV? | Am I at risk? | How do I prevent it? | I've been diagnosed</code><br>
+        Users think in questions. Navigation should match their mental model, not our org structure.</p>
+    </div>
+
+    <!-- Hero: One message -->
+    <section class="hero">
+        <h1>HPV causes <span class="data">5%</span> of all cancers. Almost all are preventable.</h1>
+        <p class="hero-lead">If everyone got vaccinated, we'd prevent 1 million cancer diagnoses and 500,000 deaths every year. The vaccine is safe. Screening works. And we're here to help you take the next step.</p>
+        <a href="#" class="hero-cta">Find out what to do next →</a>
+        <a href="#" class="hero-secondary">Learn about HPV first</a>
+    </section>
+    
+    <!-- ANNOTATION -->
+    <div class="annotation">
+        <div class="annotation-title">Change: Data Integrated into Narrative</div>
+        <p><strong>Before:</strong> Stats in a separate card (5%, 1M+, 6 types) competing with hero text.<br>
+        <strong>After:</strong> Data woven into the sentence. "5%" is part of the headline. "1 million" and "500,000" are in the subhead. No separate stats box. Tufte: <em>"Data graphics should draw the viewer into the substance of the data."</em></p>
+    </div>
+
+    <!-- Data Story: Comparative visualization -->
+    <section class="data-story">
+        <div class="data-story-inner">
+            <h2>The HPV Story in Numbers</h2>
+            <p class="data-narrative">
+                <strong>80%</strong> of sexually active adults will get HPV in their lifetime—most will never know it. 
+                In <strong>90%</strong> of cases, the infection clears on its own within two years. 
+                But for the remaining <strong>10%</strong>, persistent infection can lead to cancer—sometimes decades later. 
+                The good news: the HPV vaccine prevents <strong>90%</strong> of these cancers, and it's now approved for adults up to age <strong>45</strong>.
+            </p>
+            
+            <!-- TUFTE: Small multiples showing relative scale -->
+            <div class="cancer-breakdown">
+                <div class="cancer-bar">
+                    <div class="cancer-bar-fill"></div>
+                    <div class="cancer-bar-label">Cervical</div>
+                </div>
+                <div class="cancer-bar">
+                    <div class="cancer-bar-fill"></div>
+                    <div class="cancer-bar-label">Head &<br>Neck</div>
+                </div>
+                <div class="cancer-bar">
+                    <div class="cancer-bar-fill"></div>
+                    <div class="cancer-bar-label">Anal</div>
+                </div>
+                <div class="cancer-bar">
+                    <div class="cancer-bar-fill"></div>
+                    <div class="cancer-bar-label">Vulvar</div>
+                </div>
+                <div class="cancer-bar">
+                    <div class="cancer-bar-fill"></div>
+                    <div class="cancer-bar-label">Vaginal</div>
+                </div>
+                <div class="cancer-bar">
+                    <div class="cancer-bar-fill"></div>
+                    <div class="cancer-bar-label">Penile</div>
+                </div>
+            </div>
+            <p class="data-footnote">Relative incidence of HPV-related cancers. Cervical cancer is most common globally; head and neck cancers are rising fastest in the US.</p>
+        </div>
+    </section>
+    
+    <!-- ANNOTATION -->
+    <div class="annotation">
+        <div class="annotation-title">Change: Comparative Visualization</div>
+        <p><strong>Before:</strong> "6 Types of cancer caused by HPV" — a flat list with no hierarchy.<br>
+        <strong>After:</strong> Bar chart showing relative prevalence. User immediately sees cervical is most common, head/neck is rising. Tufte: <em>"Show the data."</em> Not just list it.</p>
+    </div>
+
+    <!-- Questions: Progressive disclosure -->
+    <section class="questions-section">
+        <h2>What do you want to know?</h2>
+        <p>Click a question to get a clear, evidence-based answer.</p>
+        
+        <div class="question-list">
+            <a href="#" class="question-item">
+                <span>Should I get the HPV vaccine?</span>
+            </a>
+            <a href="#" class="question-item">
+                <span>I'm over 26. Is it too late?</span>
+            </a>
+            <a href="#" class="question-item">
+                <span>How do I know if I have HPV?</span>
+            </a>
+            <a href="#" class="question-item">
+                <span>What screening do I need?</span>
+            </a>
+            <a href="#" class="question-item">
+                <span>I tested positive. Now what?</span>
+            </a>
+            <a href="#" class="question-item">
+                <span>Can HPV be cured?</span>
+            </a>
+            <a href="#" class="question-item">
+                <span>How do I talk to my partner about HPV?</span>
+            </a>
+            <a href="#" class="question-item">
+                <span>Is the vaccine safe?</span>
+            </a>
+        </div>
+    </section>
+    
+    <!-- ANNOTATION -->
+    <div class="annotation">
+        <div class="annotation-title">Change: Progressive Disclosure via Questions</div>
+        <p><strong>Before:</strong> Generic category cards (Education, Screening, Vaccination) with paragraphs of text.<br>
+        <strong>After:</strong> Actual user questions as navigation. Shows empathy for user's real concerns ("Is it too late?", "Is it safe?"). Nielsen: <em>"Recognition rather than recall."</em> User sees their question, clicks it, gets answer.</p>
+    </div>
+
+    <!-- HPV Next Steps Tool -->
+    <section class="tool-section">
+        <div class="tool-content">
+            <h2>Not sure where to start? Try <em>HPV Next Steps</em></h2>
+            <p>Answer 2-3 quick, anonymous questions about your age and vaccination history. Get personalized guidance on what to do next—no guesswork, no confusion.</p>
+            <a href="#" class="tool-cta">Start now — takes 2 minutes →</a>
+        </div>
+        <div class="tool-process">
+            <div class="tool-process-title">How it works</div>
+            <div class="process-step">
+                <div class="step-num">1</div>
+                <div class="step-content">
+                    <strong>Answer 2-3 questions</strong>
+                    <span>Age, sex assigned at birth, vaccination status</span>
+                </div>
+            </div>
+            <div class="process-step">
+                <div class="step-num">2</div>
+                <div class="step-content">
+                    <strong>Get your personalized results</strong>
+                    <span>Vaccination, screening, and care recommendations</span>
+                </div>
+            </div>
+            <div class="process-step">
+                <div class="step-num">3</div>
+                <div class="step-content">
+                    <strong>Take action with confidence</strong>
+                    <span>Share results with your doctor or take the next step</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About: Credibility through specificity -->
+    <section class="about-section">
+        <div>
+            <h2>No one navigates HPV alone.</h2>
+            <p>HPV Cancers Alliance is a national nonprofit committed to reducing the burden of HPV through education, prevention, and advocacy. We provide evidence-based information on HPV infection, vaccination, and cancer prevention.</p>
+            <p>We work across medical specialties to unify prevention efforts. Whether you're a patient, caregiver, or healthcare provider—we're here to help.</p>
+            
+            <div class="founders-row">
+                <div class="founder">
+                    <div class="founder-name">Lillian Kreppel</div>
+                    <div class="founder-title">Co-Founder & CEO</div>
+                    <div class="founder-bio">Anal cancer survivor. Public speaker. Entrepreneur. Founded HPVCA to ensure no one faces HPV alone.</div>
+                </div>
+                <div class="founder">
+                    <div class="founder-name">Marcia Cross</div>
+                    <div class="founder-title">Co-Founder & Chair</div>
+                    <div class="founder-bio">Emmy-nominated actress. Anal cancer survivor. Advocate for removing stigma from HPV conversations.</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="partners">
+            <h3>Our Partners & Advisors Include</h3>
+            <p class="partners-list">
+                Memorial Sloan Kettering Cancer Center • MD Anderson Cancer Center • UCSF Helen Diller Family Comprehensive Cancer Center • American Cancer Society • Prevent Cancer Foundation • National HPV Roundtable • CDC Division of Cancer Prevention • NCI Cancer Prevention Fellowship Program
+            </p>
+            <p style="margin-top: 16px; font-size: 13px; color: #5A6A7A;">35+ partner organizations across research, clinical care, and advocacy.</p>
+        </div>
+    </section>
+    
+    <!-- ANNOTATION -->
+    <div class="annotation">
+        <div class="annotation-title">Change: Specificity over Generality</div>
+        <p><strong>Before:</strong> "Founded by Survivors" badge with initials. Generic "national nonprofit" language.<br>
+        <strong>After:</strong> Full names, titles, one-line bios that explain WHY they founded this. Specific partner names (MSK, MD Anderson, etc.) instead of "35+ partners." Tufte: <em>"Specific is always more credible than general."</em></p>
+    </div>
+
+    <!-- News: Minimal -->
+    <section class="news-section">
+        <div class="news-header">
+            <h2>News & Events</h2>
+            <a href="#">View all →</a>
+        </div>
+        <div class="news-list">
+            <a href="#" class="news-item">
+                <div class="news-date">Save the Date</div>
+                <h3>Soirée in the City 2026</h3>
+                <p>October 19th in New York City. Join us for our annual fundraising gala.</p>
+            </a>
+            <a href="#" class="news-item">
+                <div class="news-date">Webinar Series</div>
+                <h3>Emerging Science in HPV</h3>
+                <p>Monthly webinars with leading researchers on prevention and treatment advances.</p>
+            </a>
+            <a href="#" class="news-item">
+                <div class="news-date">New Resource</div>
+                <h3>GI Provider Toolkit</h3>
+                <p>Evidence-based guidance for gastroenterologists on HPV-related cancer screening.</p>
+            </a>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta">
+        <h2>Help us eliminate HPV cancers.</h2>
+        <p>Every donation funds education, prevention tools, and support services.</p>
+        <a href="#" class="cta-primary">Donate now</a>
+        <a href="#" class="cta-secondary">Subscribe to newsletter</a>
+    </section>
+
+    <!-- Footer: Compressed, functional -->
+    <footer class="footer">
+        <div class="footer-brand">
+            <a href="/" class="logo">
+                <div class="logo-mark"></div>
+                <div class="logo-text"><span>HPV</span> Cancers Alliance</div>
+            </a>
+            <p>Empowering individuals with knowledge about HPV. Ensuring no one navigates alone.</p>
+        </div>
+        
+        <div class="footer-nav-grid">
+            <nav class="footer-nav">
+                <h4>Learn</h4>
+                <ul>
+                    <li><a href="#">What is HPV?</a></li>
+                    <li><a href="#">HPV Myth Busters</a></li>
+                    <li><a href="#">Vaccination Facts</a></li>
+                    <li><a href="#">Screening Guidelines</a></li>
+                </ul>
+            </nav>
+            <nav class="footer-nav">
+                <h4>Get Help</h4>
+                <ul>
+                    <li><a href="#">Just Diagnosed</a></li>
+                    <li><a href="#">Treatment Info</a></li>
+                    <li><a href="#">Support Services</a></li>
+                    <li><a href="#">Self Advocacy</a></li>
+                </ul>
+            </nav>
+            <nav class="footer-nav">
+                <h4>Connect</h4>
+                <ul>
+                    <li><a href="#">Survivor Stories</a></li>
+                    <li><a href="#">Events</a></li>
+                    <li><a href="#">Newsletter</a></li>
+                    <li><a href="#">For Providers</a></li>
+                </ul>
+            </nav>
+            <nav class="footer-nav">
+                <h4>About</h4>
+                <ul>
+                    <li><a href="#">Our Mission</a></li>
+                    <li><a href="#">Leadership</a></li>
+                    <li><a href="#">Partners</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+        
+        <div class="footer-contact">
+            <div class="social-row">
+                <a href="#" class="social-link">f</a>
+                <a href="#" class="social-link">in</a>
+                <a href="#" class="social-link">X</a>
+                <a href="#" class="social-link">▶</a>
+            </div>
+            <p>HPV Cancers Alliance<br>PO Box 23075<br>New York, NY 10023</p>
+        </div>
+        
+        <div class="footer-bottom">
+            <span>© 2026 HPV Cancers Alliance</span>
+            <div>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ANNOTATION: Summary -->
+    <div class="annotation">
+        <div class="annotation-title">Summary: V2 → V3 Changes</div>
+        <p>
+        <strong>Sections reduced:</strong> 9 → 6 (removed redundant facts bar, combined paths into questions)<br>
+        <strong>CTAs per section:</strong> Multiple → One primary<br>
+        <strong>Navigation model:</strong> Org-centric → Question-based<br>
+        <strong>Data presentation:</strong> Isolated boxes → Integrated prose + comparative visualization<br>
+        <strong>Credibility:</strong> Generic claims → Specific names and institutions<br>
+        <strong>Visual design:</strong> Boxes, gradients, rounded corners → Typography-driven, minimal color
+        </p>
+    </div>
+
+</body>
+</html>
