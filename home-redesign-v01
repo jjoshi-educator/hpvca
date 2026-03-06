@@ -1,0 +1,1881 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HPV Cancers Alliance - Education, Prevention, Action</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* HPVCA Brand Colors - Purple/Lavender Primary */
+            --purple: #7B5BA6;
+            --purple-dark: #5C4080;
+            --purple-deep: #4A3366;
+            --purple-light: #E8E0F0;
+            --lavender: #B8A5D3;
+            --lavender-light: #F3EFF8;
+            --coral: #F4A27F;
+            --coral-dark: #E8845A;
+            --coral-light: #FDE8DC;
+            --peach: #FFEEE5;
+            --teal: #00A5A8;
+            --teal-light: #D4F1F1;
+            --navy: #2D3E50;
+            --charcoal: #1A2530;
+            --warm-gray: #F9F7FC;
+            --white: #FFFFFF;
+            
+            /* Typography - Clean Sans-Serif */
+            --font-display: 'Source Sans 3', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-body: 'Source Sans 3', -apple-system, BlinkMacSystemFont, sans-serif;
+            
+            /* Spacing */
+            --space-xs: 8px;
+            --space-sm: 16px;
+            --space-md: 24px;
+            --space-lg: 48px;
+            --space-xl: 80px;
+            --space-2xl: 120px;
+            
+            /* Transitions */
+            --transition-fast: 0.2s ease;
+            --transition-medium: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-slow: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--navy);
+            line-height: 1.6;
+            background: var(--white);
+            overflow-x: hidden;
+        }
+
+        /* Skip Link - Accessibility */
+        .skip-link {
+            position: absolute;
+            top: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--purple-dark);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 0 0 8px 8px;
+            z-index: 10000;
+            transition: top var(--transition-fast);
+        }
+
+        .skip-link:focus {
+            top: 0;
+            outline: 3px solid var(--coral);
+            outline-offset: 2px;
+        }
+
+        /* ==================== HEADER ==================== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(123, 91, 166, 0.1);
+            transition: all var(--transition-medium);
+        }
+
+        header.scrolled {
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .header-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 80px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--navy);
+        }
+
+        .logo-mark {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--purple) 0%, var(--purple-dark) 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .logo-mark::before {
+            content: '';
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            border: 3px solid white;
+            border-radius: 50%;
+            opacity: 0.9;
+        }
+
+        .logo-mark::after {
+            content: '';
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: var(--coral);
+            border-radius: 50%;
+            top: 12px;
+            right: 12px;
+        }
+
+        .logo-text {
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 20px;
+            letter-spacing: -0.02em;
+        }
+
+        .logo-text span {
+            color: var(--purple);
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+
+        .nav-link {
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--navy);
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            transition: all var(--transition-fast);
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: var(--purple-dark);
+            background: var(--purple-light);
+        }
+
+        .nav-link:focus-visible {
+            outline: 2px solid var(--purple);
+            outline-offset: 2px;
+        }
+
+        .nav-link.has-dropdown::after {
+            content: '';
+            width: 0;
+            height: 0;
+            border-left: 4px solid transparent;
+            border-right: 4px solid transparent;
+            border-top: 5px solid currentColor;
+            margin-left: 6px;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-family: var(--font-body);
+            font-size: 15px;
+            font-weight: 600;
+            padding: 12px 28px;
+            border-radius: 100px;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            transition: all var(--transition-fast);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn:focus-visible {
+            outline: 3px solid var(--coral);
+            outline-offset: 3px;
+        }
+
+        .btn-primary {
+            background: var(--purple);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--purple-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(123, 91, 166, 0.35);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--purple-dark);
+            border: 2px solid var(--purple);
+        }
+
+        .btn-secondary:hover {
+            background: var(--purple);
+            color: white;
+        }
+
+        .btn-coral {
+            background: var(--coral);
+            color: var(--charcoal);
+        }
+
+        .btn-coral:hover {
+            background: var(--coral-dark);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(244, 162, 127, 0.4);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            width: 44px;
+            height: 44px;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .mobile-menu-btn span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--navy);
+            position: absolute;
+            left: 10px;
+            transition: all var(--transition-fast);
+        }
+
+        .mobile-menu-btn span:nth-child(1) { top: 15px; }
+        .mobile-menu-btn span:nth-child(2) { top: 21px; }
+        .mobile-menu-btn span:nth-child(3) { top: 27px; }
+
+        /* ==================== HERO ==================== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(165deg, var(--white) 0%, var(--lavender-light) 50%, var(--warm-gray) 100%);
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+        }
+
+        .hero-shape {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.4;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .hero-shape-1 {
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, var(--purple-light) 0%, transparent 70%);
+            top: -200px;
+            right: -100px;
+        }
+
+        .hero-shape-2 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, var(--coral-light) 0%, transparent 70%);
+            bottom: -100px;
+            left: -100px;
+            animation-delay: -10s;
+        }
+
+        .hero-shape-3 {
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, var(--lavender) 0%, transparent 70%);
+            top: 50%;
+            left: 60%;
+            animation-delay: -5s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -30px) scale(1.05); }
+            66% { transform: translate(-20px, 20px) scale(0.95); }
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: var(--space-2xl) var(--space-md);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-xl);
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-text {
+            animation: fadeSlideUp 1s ease forwards;
+        }
+
+        @keyframes fadeSlideUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: white;
+            padding: 8px 16px;
+            border-radius: 100px;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--purple-dark);
+            margin-bottom: var(--space-md);
+            box-shadow: 0 4px 20px rgba(123, 91, 166, 0.15);
+            animation: fadeSlideUp 1s ease 0.2s both;
+        }
+
+        .hero-badge::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: var(--coral);
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.5); opacity: 0.5; }
+        }
+
+        .hero h1 {
+            font-family: var(--font-display);
+            font-size: clamp(42px, 6vw, 72px);
+            font-weight: 700;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            color: var(--charcoal);
+            margin-bottom: var(--space-md);
+            animation: fadeSlideUp 1s ease 0.3s both;
+        }
+
+        .hero h1 em {
+            font-style: normal;
+            font-weight: 700;
+            color: var(--purple);
+        }
+
+        .hero-subtitle {
+            font-size: 20px;
+            line-height: 1.7;
+            color: var(--navy);
+            margin-bottom: var(--space-lg);
+            max-width: 540px;
+            animation: fadeSlideUp 1s ease 0.4s both;
+        }
+
+        .hero-ctas {
+            display: flex;
+            gap: var(--space-sm);
+            flex-wrap: wrap;
+            animation: fadeSlideUp 1s ease 0.5s both;
+        }
+
+        .hero-visual {
+            position: relative;
+            animation: fadeSlideUp 1s ease 0.4s both;
+        }
+
+        .hero-card {
+            background: white;
+            border-radius: 24px;
+            padding: var(--space-lg);
+            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.08);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, var(--purple), var(--lavender), var(--coral));
+        }
+
+        .hero-stat {
+            text-align: center;
+            padding: var(--space-md);
+        }
+
+        .hero-stat-number {
+            font-family: var(--font-display);
+            font-size: 64px;
+            font-weight: 700;
+            color: var(--purple);
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+
+        .hero-stat-label {
+            font-size: 16px;
+            color: var(--navy);
+            font-weight: 500;
+        }
+
+        .hero-stat-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--space-sm);
+            margin-top: var(--space-md);
+            padding-top: var(--space-md);
+            border-top: 1px solid rgba(123, 91, 166, 0.1);
+        }
+
+        .mini-stat {
+            text-align: center;
+        }
+
+        .mini-stat-number {
+            font-family: var(--font-display);
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--charcoal);
+        }
+
+        .mini-stat-label {
+            font-size: 13px;
+            color: var(--navy);
+            opacity: 0.8;
+        }
+
+        /* Floating elements around hero card */
+        .float-element {
+            position: absolute;
+            background: white;
+            border-radius: 16px;
+            padding: 16px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            animation: floatElement 6s ease-in-out infinite;
+        }
+
+        .float-element-1 {
+            top: -30px;
+            right: -30px;
+            animation-delay: -2s;
+        }
+
+        .float-element-2 {
+            bottom: 60px;
+            left: -40px;
+            animation-delay: -4s;
+        }
+
+        @keyframes floatElement {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .float-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .float-icon.teal { background: var(--purple-light); }
+        .float-icon.coral { background: var(--coral-light); }
+
+        /* ==================== MARQUEE ==================== */
+        .marquee-section {
+            background: var(--purple-dark);
+            padding: var(--space-sm) 0;
+            overflow: hidden;
+        }
+
+        .marquee {
+            display: flex;
+            animation: marquee 30s linear infinite;
+        }
+
+        .marquee-content {
+            display: flex;
+            align-items: center;
+            gap: var(--space-lg);
+            padding: 0 var(--space-lg);
+            white-space: nowrap;
+        }
+
+        .marquee-item {
+            font-family: var(--font-body);
+            font-size: 16px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .marquee-item::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: var(--coral);
+            border-radius: 50%;
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* ==================== MISSION SECTION ==================== */
+        .mission {
+            padding: var(--space-2xl) var(--space-md);
+            background: var(--white);
+        }
+
+        .mission-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: var(--space-xl);
+            align-items: center;
+        }
+
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--purple);
+            margin-bottom: var(--space-sm);
+        }
+
+        .section-label::before {
+            content: '';
+            width: 24px;
+            height: 2px;
+            background: var(--purple);
+        }
+
+        .mission h2 {
+            font-family: var(--font-display);
+            font-size: clamp(32px, 4vw, 48px);
+            font-weight: 600;
+            line-height: 1.2;
+            color: var(--charcoal);
+            margin-bottom: var(--space-md);
+        }
+
+        .mission h2 em {
+            font-style: normal;
+            font-weight: 700;
+            color: var(--purple);
+        }
+
+        .mission p {
+            font-size: 18px;
+            line-height: 1.8;
+            color: var(--navy);
+            margin-bottom: var(--space-md);
+        }
+
+        .mission-visual {
+            position: relative;
+        }
+
+        .mission-image-wrapper {
+            position: relative;
+            border-radius: 24px;
+            overflow: hidden;
+            aspect-ratio: 4/3;
+            background: linear-gradient(135deg, var(--purple-light), var(--lavender-light));
+        }
+
+        .mission-image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .mission-image-wrapper::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 60%, rgba(92, 64, 128, 0.3));
+        }
+
+        .founders-badge {
+            position: absolute;
+            bottom: -30px;
+            right: 30px;
+            background: white;
+            border-radius: 16px;
+            padding: var(--space-md);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.12);
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+
+        .founders-avatars {
+            display: flex;
+        }
+
+        .founder-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: 3px solid white;
+            background: var(--purple-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            color: var(--purple-dark);
+            font-size: 14px;
+        }
+
+        .founder-avatar:not(:first-child) {
+            margin-left: -12px;
+        }
+
+        .founders-info {
+            font-size: 14px;
+        }
+
+        .founders-info strong {
+            display: block;
+            color: var(--charcoal);
+        }
+
+        .founders-info span {
+            color: var(--navy);
+            opacity: 0.7;
+        }
+
+        /* ==================== PREVENTION PILLARS ==================== */
+        .pillars {
+            padding: var(--space-2xl) var(--space-md);
+            background: var(--warm-gray);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pillars::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--purple), transparent);
+        }
+
+        .pillars-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .pillars-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto var(--space-xl);
+        }
+
+        .pillars h2 {
+            font-family: var(--font-display);
+            font-size: clamp(32px, 4vw, 48px);
+            font-weight: 600;
+            color: var(--charcoal);
+            margin-bottom: var(--space-sm);
+        }
+
+        .pillars-subtitle {
+            font-size: 18px;
+            color: var(--navy);
+        }
+
+        .pillars-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-md);
+        }
+
+        .pillar-card {
+            background: white;
+            border-radius: 20px;
+            padding: var(--space-lg);
+            position: relative;
+            overflow: hidden;
+            transition: all var(--transition-medium);
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .pillar-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            transition: height var(--transition-medium);
+        }
+
+        .pillar-card:nth-child(1)::before { background: var(--purple); }
+        .pillar-card:nth-child(2)::before { background: var(--lavender); }
+        .pillar-card:nth-child(3)::before { background: var(--coral); }
+
+        .pillar-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 60px rgba(123, 91, 166, 0.15);
+        }
+
+        .pillar-card:hover::before {
+            height: 6px;
+        }
+
+        .pillar-card:focus-visible {
+            outline: 3px solid var(--purple);
+            outline-offset: 4px;
+        }
+
+        .pillar-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            margin-bottom: var(--space-md);
+        }
+
+        .pillar-card:nth-child(1) .pillar-icon { background: var(--purple-light); }
+        .pillar-card:nth-child(2) .pillar-icon { background: var(--lavender-light); }
+        .pillar-card:nth-child(3) .pillar-icon { background: var(--coral-light); }
+
+        .pillar-card h3 {
+            font-family: var(--font-display);
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--charcoal);
+            margin-bottom: var(--space-sm);
+        }
+
+        .pillar-card p {
+            font-size: 15px;
+            color: var(--navy);
+            line-height: 1.7;
+            margin-bottom: var(--space-md);
+        }
+
+        .pillar-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+            font-size: 15px;
+            transition: gap var(--transition-fast);
+        }
+
+        .pillar-card:nth-child(1) .pillar-link { color: var(--purple-dark); }
+        .pillar-card:nth-child(2) .pillar-link { color: var(--purple); }
+        .pillar-card:nth-child(3) .pillar-link { color: var(--coral-dark); }
+
+        .pillar-card:hover .pillar-link {
+            gap: 12px;
+        }
+
+        .pillar-link svg {
+            width: 20px;
+            height: 20px;
+            transition: transform var(--transition-fast);
+        }
+
+        .pillar-card:hover .pillar-link svg {
+            transform: translateX(4px);
+        }
+
+        /* ==================== NEWS & RESOURCES ==================== */
+        .news {
+            padding: var(--space-2xl) var(--space-md);
+            background: var(--white);
+        }
+
+        .news-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .news-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: var(--space-lg);
+        }
+
+        .news h2 {
+            font-family: var(--font-display);
+            font-size: clamp(32px, 4vw, 42px);
+            font-weight: 600;
+            color: var(--charcoal);
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-md);
+        }
+
+        .news-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(123, 91, 166, 0.1);
+            transition: all var(--transition-medium);
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .news-card:hover {
+            border-color: var(--purple);
+            box-shadow: 0 20px 50px rgba(123, 91, 166, 0.15);
+            transform: translateY(-4px);
+        }
+
+        .news-card:focus-visible {
+            outline: 3px solid var(--purple);
+            outline-offset: 2px;
+        }
+
+        .news-image {
+            aspect-ratio: 16/10;
+            background: linear-gradient(135deg, var(--purple-light), var(--lavender-light));
+            position: relative;
+            overflow: hidden;
+        }
+
+        .news-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform var(--transition-medium);
+        }
+
+        .news-card:hover .news-image img {
+            transform: scale(1.05);
+        }
+
+        .news-tag {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            background: white;
+            padding: 6px 12px;
+            border-radius: 100px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .news-tag.research { color: var(--purple-dark); }
+        .news-tag.event { color: var(--coral-dark); }
+        .news-tag.news { color: var(--purple); }
+
+        .news-content {
+            padding: var(--space-md);
+        }
+
+        .news-card h3 {
+            font-family: var(--font-display);
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--charcoal);
+            line-height: 1.3;
+            margin-bottom: var(--space-sm);
+        }
+
+        .news-card p {
+            font-size: 14px;
+            color: var(--navy);
+            line-height: 1.6;
+            opacity: 0.85;
+        }
+
+        .news-date {
+            font-size: 13px;
+            color: var(--purple);
+            font-weight: 500;
+            margin-top: var(--space-sm);
+        }
+
+        /* ==================== HPV NEXT STEPS TOOL ==================== */
+        .tool-section {
+            padding: var(--space-2xl) var(--space-md);
+            background: linear-gradient(135deg, var(--purple-deep) 0%, var(--purple) 50%, var(--lavender) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tool-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") repeat;
+        }
+
+        .tool-inner {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .tool-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 8px 20px;
+            border-radius: 100px;
+            font-size: 14px;
+            font-weight: 600;
+            color: white;
+            margin-bottom: var(--space-md);
+        }
+
+        .tool-badge::before {
+            content: '✨';
+        }
+
+        .tool-section h2 {
+            font-family: var(--font-display);
+            font-size: clamp(36px, 5vw, 56px);
+            font-weight: 600;
+            color: white;
+            margin-bottom: var(--space-md);
+            line-height: 1.15;
+        }
+
+        .tool-section h2 em {
+            font-style: normal;
+            font-weight: 700;
+            color: var(--peach);
+        }
+
+        .tool-description {
+            font-size: 20px;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 700px;
+            margin: 0 auto var(--space-lg);
+            line-height: 1.7;
+        }
+
+        .tool-features {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-lg);
+            margin-bottom: var(--space-lg);
+            flex-wrap: wrap;
+        }
+
+        .tool-feature {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: white;
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        .tool-feature::before {
+            content: '✓';
+            width: 24px;
+            height: 24px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+        }
+
+        .btn-white {
+            background: white;
+            color: var(--purple-dark);
+            font-size: 17px;
+            padding: 16px 36px;
+        }
+
+        .btn-white:hover {
+            background: var(--peach);
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        /* ==================== TESTIMONIAL ==================== */
+        .testimonial {
+            padding: var(--space-2xl) var(--space-md);
+            background: var(--warm-gray);
+        }
+
+        .testimonial-inner {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .testimonial-quote {
+            font-family: var(--font-display);
+            font-size: clamp(24px, 3.5vw, 36px);
+            font-weight: 400;
+            font-style: normal;
+            color: var(--charcoal);
+            line-height: 1.5;
+            margin-bottom: var(--space-lg);
+            position: relative;
+        }
+
+        .testimonial-quote::before {
+            content: '"';
+            font-size: 120px;
+            color: var(--purple-light);
+            position: absolute;
+            top: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: Georgia, serif;
+            line-height: 1;
+            z-index: 0;
+        }
+
+        .testimonial-quote span {
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-sm);
+        }
+
+        .testimonial-avatar {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--purple), var(--coral));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 18px;
+        }
+
+        .testimonial-info {
+            text-align: left;
+        }
+
+        .testimonial-name {
+            font-weight: 700;
+            color: var(--charcoal);
+            font-size: 17px;
+        }
+
+        .testimonial-role {
+            font-size: 14px;
+            color: var(--navy);
+            opacity: 0.7;
+        }
+
+        /* ==================== CTA SECTION ==================== */
+        .cta {
+            padding: var(--space-2xl) var(--space-md);
+            background: var(--charcoal);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta::before {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, var(--purple) 0%, transparent 70%);
+            opacity: 0.1;
+            top: -200px;
+            right: -200px;
+        }
+
+        .cta::after {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, var(--coral) 0%, transparent 70%);
+            opacity: 0.1;
+            bottom: -150px;
+            left: -150px;
+        }
+
+        .cta-inner {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta h2 {
+            font-family: var(--font-display);
+            font-size: clamp(32px, 4vw, 48px);
+            font-weight: 600;
+            color: white;
+            margin-bottom: var(--space-sm);
+        }
+
+        .cta p {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.75);
+            margin-bottom: var(--space-lg);
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-sm);
+            flex-wrap: wrap;
+        }
+
+        /* ==================== FOOTER - SOFT/LIGHT ==================== */
+        footer {
+            background: var(--lavender-light);
+            color: var(--navy);
+            padding: var(--space-xl) var(--space-md) var(--space-md);
+            border-top: 1px solid var(--purple-light);
+        }
+
+        .footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-top {
+            display: grid;
+            grid-template-columns: 1.5fr repeat(3, 1fr);
+            gap: var(--space-lg);
+            padding-bottom: var(--space-lg);
+            border-bottom: 1px solid var(--purple-light);
+        }
+
+        .footer-brand {
+            max-width: 300px;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: var(--space-md);
+            text-decoration: none;
+            color: var(--navy);
+        }
+
+        .footer-logo .logo-mark {
+            width: 40px;
+            height: 40px;
+        }
+
+        .footer-logo .logo-text {
+            font-size: 18px;
+            color: var(--navy);
+        }
+
+        .footer-logo .logo-text span {
+            color: var(--purple);
+        }
+
+        .footer-tagline {
+            font-size: 15px;
+            color: var(--navy);
+            opacity: 0.75;
+            line-height: 1.6;
+            margin-bottom: var(--space-md);
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 12px;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background: var(--purple-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--purple-dark);
+            text-decoration: none;
+            transition: all var(--transition-fast);
+        }
+
+        .social-link:hover {
+            background: var(--purple);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .footer-nav h4 {
+            font-family: var(--font-display);
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: var(--space-md);
+            color: var(--navy);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .footer-nav ul {
+            list-style: none;
+        }
+
+        .footer-nav li {
+            margin-bottom: 12px;
+        }
+
+        .footer-nav a {
+            color: var(--navy);
+            opacity: 0.7;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color var(--transition-fast);
+        }
+
+        .footer-nav a:hover {
+            color: var(--purple);
+            opacity: 1;
+        }
+
+        .footer-bottom {
+            padding-top: var(--space-md);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+        }
+
+        .footer-copy {
+            font-size: 13px;
+            color: var(--navy);
+            opacity: 0.6;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: var(--space-md);
+        }
+
+        .footer-links a {
+            font-size: 13px;
+            color: var(--navy);
+            opacity: 0.6;
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            color: var(--purple);
+            opacity: 1;
+        }
+
+        /* ==================== RESPONSIVE ==================== */
+        @media (max-width: 1024px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                padding-top: 140px;
+            }
+
+            .hero-text {
+                max-width: 600px;
+                margin: 0 auto;
+            }
+
+            .hero-subtitle {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-ctas {
+                justify-content: center;
+            }
+
+            .hero-visual {
+                max-width: 500px;
+                margin: 0 auto;
+            }
+
+            .mission-inner {
+                grid-template-columns: 1fr;
+            }
+
+            .pillars-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .news-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-top {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero-card {
+                padding: var(--space-md);
+            }
+
+            .hero-stat-number {
+                font-size: 48px;
+            }
+
+            .float-element {
+                display: none;
+            }
+
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .tool-features {
+                flex-direction: column;
+                align-items: center;
+                gap: var(--space-sm);
+            }
+
+            .footer-top {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .footer-brand {
+                max-width: 100%;
+            }
+
+            .footer-social {
+                justify-content: center;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        /* ==================== FOCUS STATES FOR ACCESSIBILITY ==================== */
+        a:focus-visible,
+        button:focus-visible,
+        input:focus-visible,
+        select:focus-visible,
+        textarea:focus-visible {
+            outline: 3px solid var(--purple);
+            outline-offset: 2px;
+        }
+
+        /* Reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Skip Link for Accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Header -->
+    <header id="header">
+        <div class="header-inner">
+            <a href="/" class="logo" aria-label="HPV Cancers Alliance Home">
+                <div class="logo-mark" aria-hidden="true"></div>
+                <div class="logo-text"><span>HPV</span> Cancers Alliance</div>
+            </a>
+            
+            <nav aria-label="Main navigation">
+                <a href="/what-is-hpv" class="nav-link">What is HPV?</a>
+                <a href="/prevention" class="nav-link has-dropdown">Prevention</a>
+                <a href="/treatments" class="nav-link has-dropdown">Treatments</a>
+                <a href="/resources" class="nav-link has-dropdown">Resources</a>
+                <a href="/about" class="nav-link">About</a>
+                <a href="/donate" class="btn btn-coral">Support Us</a>
+            </nav>
+
+            <button class="mobile-menu-btn" aria-label="Open menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <!-- Hero Section -->
+        <section class="hero" aria-labelledby="hero-heading">
+            <div class="hero-bg" aria-hidden="true">
+                <div class="hero-shape hero-shape-1"></div>
+                <div class="hero-shape hero-shape-2"></div>
+                <div class="hero-shape hero-shape-3"></div>
+            </div>
+            
+            <div class="hero-content">
+                <div class="hero-text">
+                    <div class="hero-badge">Prevention Saves Lives</div>
+                    <h1 id="hero-heading">Together, We Can <em>Eliminate</em> HPV Cancers</h1>
+                    <p class="hero-subtitle">HPV causes 5% of all cancers worldwide. Through education, vaccination, and early detection, we're building a future free from HPV-related cancers.</p>
+                    <div class="hero-ctas">
+                        <a href="/hpv-next-steps" class="btn btn-primary">Take HPV Next Steps</a>
+                        <a href="/what-is-hpv" class="btn btn-secondary">Learn About HPV</a>
+                    </div>
+                </div>
+                
+                <div class="hero-visual">
+                    <div class="hero-card">
+                        <div class="hero-stat">
+                            <div class="hero-stat-number" aria-label="5 percent">5%</div>
+                            <div class="hero-stat-label">of all cancers worldwide are caused by HPV</div>
+                        </div>
+                        <div class="hero-stat-grid">
+                            <div class="mini-stat">
+                                <div class="mini-stat-number">1M+</div>
+                                <div class="mini-stat-label">Cancer cases preventable yearly</div>
+                            </div>
+                            <div class="mini-stat">
+                                <div class="mini-stat-number">6</div>
+                                <div class="mini-stat-label">Types of cancer caused by HPV</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="float-element float-element-1" aria-hidden="true">
+                        <div class="float-icon teal">💉</div>
+                    </div>
+                    <div class="float-element float-element-2" aria-hidden="true">
+                        <div class="float-icon coral">💜</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Marquee -->
+        <div class="marquee-section" aria-hidden="true">
+            <div class="marquee">
+                <div class="marquee-content">
+                    <span class="marquee-item">Education</span>
+                    <span class="marquee-item">Inclusivity</span>
+                    <span class="marquee-item">Collaboration</span>
+                    <span class="marquee-item">Action</span>
+                    <span class="marquee-item">Education</span>
+                    <span class="marquee-item">Inclusivity</span>
+                    <span class="marquee-item">Collaboration</span>
+                    <span class="marquee-item">Action</span>
+                </div>
+                <div class="marquee-content">
+                    <span class="marquee-item">Education</span>
+                    <span class="marquee-item">Inclusivity</span>
+                    <span class="marquee-item">Collaboration</span>
+                    <span class="marquee-item">Action</span>
+                    <span class="marquee-item">Education</span>
+                    <span class="marquee-item">Inclusivity</span>
+                    <span class="marquee-item">Collaboration</span>
+                    <span class="marquee-item">Action</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mission Section -->
+        <section class="mission" aria-labelledby="mission-heading">
+            <div class="mission-inner">
+                <div class="mission-text">
+                    <div class="section-label">Who We Are</div>
+                    <h2 id="mission-heading">Empowering <em>everyone</em> with knowledge to prevent HPV cancers</h2>
+                    <p>HPV Cancers Alliance is a national nonprofit committed to reducing the burden of HPV through comprehensive education, prevention, and advocacy. We offer trusted, evidence-based information on HPV infection, vaccination, and cancer prevention.</p>
+                    <p>With a focus on collaboration across medical specialties, we work to unify prevention efforts and support informed care at every stage. Whether you're a patient, caregiver, or healthcare professional, we're here to ensure no one navigates HPV alone.</p>
+                    <a href="/about" class="btn btn-secondary">Our Story</a>
+                </div>
+                
+                <div class="mission-visual">
+                    <div class="mission-image-wrapper">
+                        <div style="width: 100%; height: 100%; background: linear-gradient(135deg, var(--purple-light) 0%, var(--lavender-light) 50%, var(--coral-light) 100%); display: flex; align-items: center; justify-content: center; color: var(--purple-dark); font-size: 64px;">🤝</div>
+                    </div>
+                    <div class="founders-badge">
+                        <div class="founders-avatars">
+                            <div class="founder-avatar">LK</div>
+                            <div class="founder-avatar">MC</div>
+                        </div>
+                        <div class="founders-info">
+                            <strong>Founded by Survivors</strong>
+                            <span>Lillian Kreppel & Marcia Cross</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Prevention Pillars -->
+        <section class="pillars" aria-labelledby="pillars-heading">
+            <div class="pillars-inner">
+                <div class="pillars-header">
+                    <div class="section-label">Our Focus</div>
+                    <h2 id="pillars-heading">Three Pillars of Prevention</h2>
+                    <p class="pillars-subtitle">We take a comprehensive approach to eliminating HPV-related cancers through education, screening, and vaccination.</p>
+                </div>
+                
+                <div class="pillars-grid">
+                    <a href="/what-is-hpv" class="pillar-card">
+                        <div class="pillar-icon">📚</div>
+                        <h3>Education</h3>
+                        <p>Trusted, evidence-based information to help you understand HPV, its risks, and how to protect yourself and your loved ones.</p>
+                        <span class="pillar-link">
+                            Learn About HPV
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </span>
+                    </a>
+                    
+                    <a href="/screening" class="pillar-card">
+                        <div class="pillar-icon">🔬</div>
+                        <h3>Screening</h3>
+                        <p>Early detection saves lives. Learn about screening recommendations for cervical, anal, and other HPV-related cancers.</p>
+                        <span class="pillar-link">
+                            Screening Guidelines
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </span>
+                    </a>
+                    
+                    <a href="/vaccination" class="pillar-card">
+                        <div class="pillar-icon">💉</div>
+                        <h3>Vaccination</h3>
+                        <p>The HPV vaccine is safe, effective, and can prevent up to 90% of HPV-related cancers. It's never too late to protect yourself.</p>
+                        <span class="pillar-link">
+                            Vaccination Info
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- News & Resources -->
+        <section class="news" aria-labelledby="news-heading">
+            <div class="news-inner">
+                <div class="news-header">
+                    <div>
+                        <div class="section-label">Stay Informed</div>
+                        <h2 id="news-heading">News & Resources</h2>
+                    </div>
+                    <a href="/news" class="btn btn-secondary">View All</a>
+                </div>
+                
+                <div class="news-grid">
+                    <a href="/emerging-science-webinar" class="news-card">
+                        <div class="news-image">
+                            <span class="news-tag research">Research</span>
+                            <div style="width: 100%; height: 100%; background: linear-gradient(135deg, var(--purple-light), var(--lavender-light));"></div>
+                        </div>
+                        <div class="news-content">
+                            <h3>Emerging Science Webinar Series</h3>
+                            <p>Join leading researchers as they discuss the latest advances in HPV prevention and treatment.</p>
+                            <div class="news-date">Ongoing Series</div>
+                        </div>
+                    </a>
+                    
+                    <a href="/soiree-in-the-city" class="news-card">
+                        <div class="news-image">
+                            <span class="news-tag event">Event</span>
+                            <div style="width: 100%; height: 100%; background: linear-gradient(135deg, var(--coral-light), var(--lavender-light));"></div>
+                        </div>
+                        <div class="news-content">
+                            <h3>Soirée in the City 2026</h3>
+                            <p>Save the date for our annual fundraising gala on October 19th, 2026 in New York City.</p>
+                            <div class="news-date">October 19, 2026</div>
+                        </div>
+                    </a>
+                    
+                    <a href="/survivor-stories" class="news-card">
+                        <div class="news-image">
+                            <span class="news-tag news">Stories</span>
+                            <div style="width: 100%; height: 100%; background: linear-gradient(135deg, var(--lavender-light), var(--purple-light));"></div>
+                        </div>
+                        <div class="news-content">
+                            <h3>Survivor Stories</h3>
+                            <p>Read inspiring stories from HPV cancer survivors who are sharing their journeys to help others.</p>
+                            <div class="news-date">Featured Stories</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- HPV Next Steps Tool -->
+        <section class="tool-section" aria-labelledby="tool-heading">
+            <div class="tool-inner">
+                <div class="tool-badge">New Resource</div>
+                <h2 id="tool-heading">Meet <em>HPV Next Steps</em></h2>
+                <p class="tool-description">Your personalized guide to HPV prevention and care. Answer 2-3 quick, anonymous questions and get tailored guidance on vaccination, screening, and what to do next.</p>
+                
+                <div class="tool-features">
+                    <div class="tool-feature">Free & Anonymous</div>
+                    <div class="tool-feature">Personalized Results</div>
+                    <div class="tool-feature">Evidence-Based</div>
+                </div>
+                
+                <a href="https://redcap.link/hpvnextsteps" class="btn btn-white" target="_blank" rel="noopener">
+                    Try HPV Next Steps
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                    </svg>
+                </a>
+            </div>
+        </section>
+
+        <!-- Testimonial -->
+        <section class="testimonial" aria-labelledby="testimonial-heading">
+            <div class="testimonial-inner">
+                <h2 id="testimonial-heading" class="visually-hidden">Testimonial</h2>
+                <blockquote class="testimonial-quote">
+                    <span>Getting cancer, especially one with the stigma of HPV, didn't hold me back—it lit a fire in me to educate, break barriers, and save lives.</span>
+                </blockquote>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar">LK</div>
+                    <div class="testimonial-info">
+                        <div class="testimonial-name">Lillian Kreppel</div>
+                        <div class="testimonial-role">Co-Founder & CEO, HPV Cancers Alliance</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta" aria-labelledby="cta-heading">
+            <div class="cta-inner">
+                <h2 id="cta-heading">Join the Movement</h2>
+                <p>Together, we can eliminate HPV-related cancers. Your support makes a difference.</p>
+                <div class="cta-buttons">
+                    <a href="/donate" class="btn btn-coral">Donate Now</a>
+                    <a href="/newsletter" class="btn btn-secondary" style="border-color: white; color: white;">Subscribe to Newsletter</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <a href="/" class="footer-logo">
+                        <div class="logo-mark"></div>
+                        <div class="logo-text"><span>HPV</span> Cancers Alliance</div>
+                    </a>
+                    <p class="footer-tagline">Empowering individuals with knowledge about HPV infection and emboldening them to take action to prevent and treat the virus.</p>
+                    <div class="footer-social">
+                        <a href="https://facebook.com/HPVCancersAlliance" class="social-link" aria-label="Facebook">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                        </a>
+                        <a href="https://instagram.com/hpvcancersalliance" class="social-link" aria-label="Instagram">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                        </a>
+                        <a href="https://x.com/HPVAlliance" class="social-link" aria-label="X (Twitter)">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                        </a>
+                        <a href="https://linkedin.com/company/hpv-alliance" class="social-link" aria-label="LinkedIn">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <nav class="footer-nav" aria-label="Learn navigation">
+                    <h4>Learn</h4>
+                    <ul>
+                        <li><a href="/what-is-hpv">What is HPV?</a></li>
+                        <li><a href="/myth-busters">HPV Myth Busters</a></li>
+                        <li><a href="/screening">Screening</a></li>
+                        <li><a href="/vaccination">Vaccination</a></li>
+                    </ul>
+                </nav>
+                
+                <nav class="footer-nav" aria-label="Resources navigation">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="/survivor-stories">Survivor Stories</a></li>
+                        <li><a href="/support-services">Support Services</a></li>
+                        <li><a href="/educational-resources">Educational Materials</a></li>
+                        <li><a href="/hpv-legislation">HPV Legislation</a></li>
+                    </ul>
+                </nav>
+                
+                <nav class="footer-nav" aria-label="About navigation">
+                    <h4>About</h4>
+                    <ul>
+                        <li><a href="/about">Our Mission</a></li>
+                        <li><a href="/leadership-team">Leadership</a></li>
+                        <li><a href="/mission-partners">Partners</a></li>
+                        <li><a href="/contact-us">Contact Us</a></li>
+                    </ul>
+                </nav>
+            </div>
+            
+            <div class="footer-bottom">
+                <p class="footer-copy">© 2026 HPV Cancers Alliance. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="/privacy-policy">Privacy Policy</a>
+                    <a href="/terms">Terms of Use</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll behavior script -->
+    <script>
+        // Header scroll effect
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe sections for scroll animations
+        document.querySelectorAll('section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(30px)';
+            section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(section);
+        });
+
+        // Make hero visible immediately
+        document.querySelector('.hero').style.opacity = '1';
+        document.querySelector('.hero').style.transform = 'translateY(0)';
+    </script>
+
+    <style>
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+    </style>
+</body>
+</html>
