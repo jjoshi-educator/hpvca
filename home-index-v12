@@ -1,0 +1,1100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HPV Cancers Alliance — Preventing HPV-Related Cancers Through Education, Vaccination & Advocacy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    /* HPVCA Brand Colors - purples & lavenders */
+    --purple-deep: #4A1A6B;
+    --purple: #6B2D8B;
+    --purple-mid: #8246A8;
+    --purple-light: #A76DC6;
+    --lavender: #C9A4E2;
+    --lavender-soft: #E8D5F5;
+    --lavender-bg: #F5EEFB;
+    --lavender-faint: #FAF6FD;
+
+    /* Neutrals - clean white look */
+    --white: #FFFFFF;
+    --off-white: #FDFCFE;
+    --gray-100: #F7F5F9;
+    --gray-200: #EDEBEF;
+    --gray-300: #D4D0D9;
+    --gray-500: #8A8490;
+    --gray-700: #4A4550;
+    --gray-900: #1E1A24;
+
+    /* Accent for CTAs */
+    --coral: #E8645A;
+    --coral-hover: #D4524A;
+
+    /* System */
+    --font: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --radius: 12px;
+    --radius-lg: 18px;
+    --radius-xl: 24px;
+    --shadow-sm: 0 1px 3px rgba(74,26,107,0.04);
+    --shadow: 0 4px 20px rgba(74,26,107,0.06);
+    --shadow-lg: 0 8px 40px rgba(74,26,107,0.1);
+    --shadow-purple: 0 8px 30px rgba(107,45,139,0.2);
+    --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font);
+    color: var(--gray-900);
+    background: var(--white);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ===========================
+     ANNOUNCEMENT BAR
+     =========================== */
+  .announcement {
+    background: var(--purple-deep);
+    color: white;
+    text-align: center;
+    padding: 11px 24px;
+    font-size: 0.84rem;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+  }
+  .announcement strong { font-weight: 600; }
+  .announcement a {
+    color: var(--lavender);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    font-weight: 500;
+    transition: var(--transition);
+  }
+  .announcement a:hover { color: white; }
+
+  /* ===========================
+     HEADER
+     =========================== */
+  header {
+    background: var(--white);
+    border-bottom: 1px solid var(--gray-200);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(12px);
+    background: rgba(255,255,255,0.95);
+  }
+  .header-inner {
+    max-width: 1180px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
+    height: 64px;
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: var(--purple-deep);
+    font-weight: 700;
+    font-size: 1.05rem;
+    letter-spacing: -0.01em;
+  }
+  .logo-mark {
+    width: 36px;
+    height: 36px;
+    background: linear-gradient(135deg, var(--purple) 0%, var(--purple-light) 100%);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 800;
+    font-size: 0.95rem;
+  }
+  nav { display: flex; align-items: center; gap: 2px; }
+  nav a {
+    color: var(--gray-700);
+    text-decoration: none;
+    font-size: 0.88rem;
+    font-weight: 500;
+    padding: 8px 14px;
+    border-radius: 8px;
+    transition: var(--transition);
+  }
+  nav a:hover { background: var(--lavender-bg); color: var(--purple); }
+  nav a.active { background: var(--lavender-bg); color: var(--purple); font-weight: 600; }
+  .nav-donate {
+    background: var(--purple) !important;
+    color: white !important;
+    font-weight: 600 !important;
+    padding: 9px 22px !important;
+    border-radius: 50px !important;
+    margin-left: 10px;
+  }
+  .nav-donate:hover { background: var(--purple-deep) !important; }
+  .mobile-toggle { display: none; background: none; border: none; cursor: pointer; padding: 8px; }
+  .mobile-toggle svg { width: 22px; height: 22px; color: var(--gray-700); }
+
+  /* ===========================
+     HERO
+     =========================== */
+  .hero {
+    background: var(--white);
+    padding: 80px 24px 70px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -40%;
+    right: -15%;
+    width: 700px;
+    height: 700px;
+    background: radial-gradient(circle, var(--lavender-bg) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+  .hero-inner {
+    max-width: 1180px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 56px;
+    align-items: center;
+    position: relative;
+  }
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--purple);
+    font-size: 0.82rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 18px;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    width: 24px;
+    height: 2px;
+    background: var(--purple);
+    border-radius: 2px;
+  }
+  .hero h1 {
+    font-size: clamp(2.4rem, 4.5vw, 3.6rem);
+    font-weight: 800;
+    line-height: 1.1;
+    color: var(--gray-900);
+    margin-bottom: 20px;
+    letter-spacing: -0.03em;
+  }
+  .hero h1 .accent {
+    color: var(--purple);
+  }
+  .hero-sub {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--gray-500);
+    max-width: 500px;
+    margin-bottom: 32px;
+    font-weight: 400;
+  }
+  .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font);
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 14px 28px;
+    border-radius: 50px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: var(--transition);
+  }
+  .btn-purple {
+    background: var(--purple);
+    color: white;
+  }
+  .btn-purple:hover { background: var(--purple-deep); transform: translateY(-1px); box-shadow: var(--shadow-purple); }
+  .btn-outline-purple {
+    background: transparent;
+    color: var(--purple);
+    border: 2px solid var(--lavender);
+  }
+  .btn-outline-purple:hover { background: var(--lavender-bg); border-color: var(--purple-light); }
+  .btn-coral {
+    background: var(--coral);
+    color: white;
+  }
+  .btn-coral:hover { background: var(--coral-hover); transform: translateY(-1px); }
+  .btn-white {
+    background: white;
+    color: var(--purple);
+  }
+  .btn-white:hover { background: var(--lavender-faint); }
+  .btn-sm { padding: 10px 20px; font-size: 0.88rem; }
+  .btn svg { width: 16px; height: 16px; }
+
+  /* Hero stat cards */
+  .hero-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .stat-card {
+    background: var(--white);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-lg);
+    padding: 26px 28px;
+    transition: var(--transition);
+  }
+  .stat-card:hover { border-color: var(--lavender); box-shadow: var(--shadow); }
+  .stat-card-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--gray-500);
+    font-weight: 500;
+    margin-bottom: 4px;
+  }
+  .stat-card-value {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--purple);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+  }
+  .stat-card-detail {
+    font-size: 0.85rem;
+    color: var(--gray-500);
+    margin-top: 2px;
+  }
+  .stat-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+  .stat-card.featured {
+    background: linear-gradient(135deg, var(--purple-deep) 0%, var(--purple) 100%);
+    border-color: transparent;
+    color: white;
+  }
+  .stat-card.featured .stat-card-label { color: var(--lavender); }
+  .stat-card.featured .stat-card-value { color: white; }
+  .stat-card.featured .stat-card-detail { color: var(--lavender-soft); }
+
+  /* ===========================
+     HPV NEXT STEPS TOOL
+     =========================== */
+  .tool-section {
+    padding: 80px 24px;
+    background: var(--lavender-faint);
+  }
+  .tool-inner {
+    max-width: 1080px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 56px;
+    align-items: center;
+  }
+  .section-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--lavender-soft);
+    color: var(--purple);
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 5px 14px;
+    border-radius: 50px;
+    margin-bottom: 16px;
+  }
+  .section-title {
+    font-size: clamp(1.7rem, 2.8vw, 2.3rem);
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--gray-900);
+    margin-bottom: 14px;
+    letter-spacing: -0.02em;
+  }
+  .section-desc {
+    font-size: 1rem;
+    color: var(--gray-500);
+    line-height: 1.7;
+    margin-bottom: 28px;
+  }
+  .steps-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 30px;
+  }
+  .steps-list li {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-size: 0.92rem;
+    color: var(--gray-700);
+    font-weight: 400;
+  }
+  .step-dot {
+    width: 28px;
+    height: 28px;
+    min-width: 28px;
+    background: var(--purple);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+  }
+  /* Tool mockup */
+  .tool-preview {
+    background: var(--white);
+    border-radius: var(--radius-xl);
+    padding: 36px;
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--gray-200);
+  }
+  .tool-preview-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 24px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--gray-200);
+  }
+  .tool-preview-icon {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, var(--purple) 0%, var(--purple-light) 100%);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.1rem;
+  }
+  .tool-preview-title {
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--gray-900);
+  }
+  .tool-preview-sub {
+    font-size: 0.78rem;
+    color: var(--gray-500);
+  }
+  .mock-field {
+    background: var(--gray-100);
+    border-radius: 10px;
+    padding: 13px 18px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.88rem;
+  }
+  .mock-field-label { color: var(--gray-500); font-weight: 400; }
+  .mock-field-value { color: var(--purple); font-weight: 600; }
+  .mock-btn {
+    width: 100%;
+    background: var(--purple);
+    color: white;
+    border: none;
+    padding: 14px;
+    border-radius: 10px;
+    font-family: var(--font);
+    font-weight: 600;
+    font-size: 0.92rem;
+    margin-top: 8px;
+    cursor: pointer;
+    transition: var(--transition);
+  }
+  .mock-btn:hover { background: var(--purple-deep); }
+
+  /* ===========================
+     INFO CARDS - ABOUT HPV
+     =========================== */
+  .info-section {
+    padding: 80px 24px;
+    background: var(--white);
+  }
+  .info-header {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto 44px;
+  }
+  .info-grid {
+    max-width: 1080px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .info-card {
+    background: var(--white);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-lg);
+    padding: 32px 28px;
+    transition: var(--transition);
+  }
+  .info-card:hover {
+    border-color: var(--lavender);
+    box-shadow: var(--shadow);
+    transform: translateY(-3px);
+  }
+  .info-icon {
+    width: 48px;
+    height: 48px;
+    background: var(--lavender-bg);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    margin-bottom: 18px;
+  }
+  .info-card h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--gray-900);
+  }
+  .info-card p {
+    font-size: 0.9rem;
+    color: var(--gray-500);
+    line-height: 1.65;
+    margin-bottom: 14px;
+  }
+  .card-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    color: var(--purple);
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-decoration: none;
+    transition: var(--transition);
+  }
+  .card-link:hover { gap: 9px; color: var(--purple-deep); }
+  .card-link::after { content: '→'; }
+
+  /* ===========================
+     SURVIVOR STORY
+     =========================== */
+  .story-section {
+    padding: 80px 24px;
+    background: var(--lavender-faint);
+  }
+  .story-inner {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .story-quote-mark {
+    font-size: 4rem;
+    color: var(--lavender);
+    line-height: 1;
+    margin-bottom: -10px;
+    font-weight: 300;
+  }
+  .story-quote {
+    font-size: clamp(1.15rem, 2vw, 1.45rem);
+    line-height: 1.65;
+    color: var(--gray-900);
+    font-weight: 400;
+    margin-bottom: 30px;
+    font-style: italic;
+  }
+  .story-author {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    margin-bottom: 32px;
+  }
+  .story-avatar {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--purple-light), var(--lavender));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 700;
+    font-size: 1.05rem;
+  }
+  .story-name { font-weight: 600; color: var(--gray-900); font-size: 0.95rem; }
+  .story-role { color: var(--gray-500); font-size: 0.82rem; }
+
+  /* ===========================
+     IMPACT STATS
+     =========================== */
+  .impact-section {
+    padding: 64px 24px;
+    background: linear-gradient(135deg, var(--purple-deep) 0%, var(--purple) 50%, var(--purple-mid) 100%);
+    color: white;
+  }
+  .impact-inner {
+    max-width: 1080px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 36px;
+    text-align: center;
+  }
+  .impact-num {
+    font-size: 2.8rem;
+    font-weight: 800;
+    line-height: 1;
+    margin-bottom: 6px;
+    letter-spacing: -0.02em;
+  }
+  .impact-label {
+    font-size: 0.85rem;
+    opacity: 0.7;
+    font-weight: 400;
+    line-height: 1.4;
+  }
+
+  /* ===========================
+     EVENT
+     =========================== */
+  .event-section {
+    padding: 80px 24px;
+    background: var(--white);
+  }
+  .event-card {
+    max-width: 900px;
+    margin: 0 auto;
+    background: var(--gray-900);
+    border-radius: var(--radius-xl);
+    padding: 48px 52px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 36px;
+    align-items: center;
+    color: white;
+    position: relative;
+    overflow: hidden;
+  }
+  .event-card::before {
+    content: '';
+    position: absolute;
+    top: -60%;
+    right: -5%;
+    width: 350px;
+    height: 350px;
+    background: radial-gradient(circle, rgba(107,45,139,0.3) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .event-date {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(200,164,226,0.15);
+    color: var(--lavender);
+    padding: 5px 14px;
+    border-radius: 50px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 14px;
+  }
+  .event-title {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    letter-spacing: -0.01em;
+  }
+  .event-desc {
+    font-size: 0.92rem;
+    opacity: 0.65;
+    line-height: 1.6;
+  }
+  .event-cta { position: relative; z-index: 1; }
+
+  /* ===========================
+     NEWSLETTER
+     =========================== */
+  .newsletter-section {
+    padding: 80px 24px;
+    background: var(--lavender-faint);
+    text-align: center;
+  }
+  .newsletter-inner { max-width: 520px; margin: 0 auto; }
+  .newsletter-form {
+    display: flex;
+    gap: 10px;
+    margin-top: 24px;
+  }
+  .newsletter-input {
+    flex: 1;
+    padding: 14px 20px;
+    border: 2px solid var(--gray-200);
+    border-radius: 50px;
+    font-size: 0.92rem;
+    font-family: var(--font);
+    outline: none;
+    transition: var(--transition);
+    background: var(--white);
+  }
+  .newsletter-input:focus { border-color: var(--purple-light); }
+  .newsletter-input::placeholder { color: var(--gray-300); }
+  .newsletter-note {
+    font-size: 0.78rem;
+    color: var(--gray-500);
+    margin-top: 12px;
+  }
+
+  /* ===========================
+     FOOTER
+     =========================== */
+  footer {
+    background: var(--gray-900);
+    color: white;
+    padding: 56px 24px 28px;
+  }
+  .footer-inner {
+    max-width: 1080px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.5fr repeat(3, 1fr);
+    gap: 40px;
+  }
+  .footer-brand {
+    font-weight: 700;
+    font-size: 1.05rem;
+    margin-bottom: 10px;
+  }
+  .footer-tagline {
+    font-size: 0.85rem;
+    opacity: 0.5;
+    line-height: 1.6;
+    margin-bottom: 18px;
+  }
+  .footer-social { display: flex; gap: 8px; }
+  .footer-social a {
+    width: 34px;
+    height: 34px;
+    background: rgba(255,255,255,0.07);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-decoration: none;
+    font-size: 0.8rem;
+    transition: var(--transition);
+  }
+  .footer-social a:hover { background: var(--purple); }
+  .footer-col h4 {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    opacity: 0.4;
+    margin-bottom: 14px;
+    font-weight: 600;
+  }
+  .footer-col a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    font-size: 0.88rem;
+    opacity: 0.6;
+    margin-bottom: 9px;
+    transition: var(--transition);
+  }
+  .footer-col a:hover { opacity: 1; }
+  .footer-bottom {
+    max-width: 1080px;
+    margin: 36px auto 0;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.07);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.78rem;
+    opacity: 0.35;
+  }
+  .footer-bottom a { color: white; text-decoration: underline; text-underline-offset: 2px; }
+
+  /* ===========================
+     NIELSEN ANNOTATIONS
+     =========================== */
+  .annotations-btn {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 200;
+    background: var(--gray-900);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 50px;
+    font-family: var(--font);
+    font-size: 0.84rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .annotations-btn:hover { transform: translateY(-2px); }
+
+  .nielsen {
+    display: none;
+    position: absolute;
+    top: -8px;
+    left: 20px;
+    background: var(--coral);
+    color: white;
+    font-size: 0.68rem;
+    font-weight: 700;
+    padding: 3px 9px;
+    border-radius: 4px;
+    font-family: var(--font);
+    white-space: nowrap;
+    z-index: 50;
+    letter-spacing: 0.02em;
+  }
+  .nielsen::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 12px;
+    width: 0; height: 0;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 4px solid var(--coral);
+  }
+  body.show-notes .nielsen { display: block; }
+  body.show-notes [data-n] {
+    outline: 2px dashed var(--coral);
+    outline-offset: 4px;
+    position: relative;
+  }
+
+  /* ===========================
+     RESPONSIVE
+     =========================== */
+  @media (max-width: 920px) {
+    nav { display: none; }
+    .mobile-toggle { display: block; }
+    .hero-inner { grid-template-columns: 1fr; gap: 36px; }
+    .hero { padding: 56px 24px 48px; }
+    .tool-inner { grid-template-columns: 1fr; gap: 36px; }
+    .info-grid { grid-template-columns: 1fr; }
+    .impact-inner { grid-template-columns: 1fr 1fr; gap: 28px; }
+    .event-card { grid-template-columns: 1fr; text-align: center; padding: 36px 28px; }
+    .event-cta { justify-self: center; }
+    .footer-inner { grid-template-columns: 1fr 1fr; }
+    .footer-bottom { flex-direction: column; gap: 6px; text-align: center; }
+    .newsletter-form { flex-direction: column; }
+  }
+  @media (max-width: 500px) {
+    .stat-row { grid-template-columns: 1fr; }
+    .impact-inner { grid-template-columns: 1fr 1fr; }
+    .footer-inner { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 2rem; }
+  }
+
+  /* Animations */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero-inner > * { animation: fadeIn 0.6s ease-out both; }
+  .hero-inner > *:nth-child(2) { animation-delay: 0.1s; }
+</style>
+</head>
+<body>
+
+<!-- Announcement Bar -->
+<div class="announcement">
+  <strong>HPV vaccination can prevent up to 90% of HPV-related cancers.</strong>
+  <a href="https://hpvca.org/stop-hpv-in-its-tracks/">Find a vaccination site near you →</a>
+</div>
+
+<!-- Header — Nielsen #6: Recognition over recall -->
+<header data-n>
+  <span class="nielsen">#6 Recognition: 5 clear nav items</span>
+  <div class="header-inner">
+    <a href="https://hpvca.org" class="logo">
+      <span class="logo-mark">H</span>
+      HPV Cancers Alliance
+    </a>
+    <nav>
+      <a href="https://hpvca.org/what-is-hpv/" class="active">About HPV</a>
+      <a href="https://hpvca.org/stop-hpv-in-its-tracks/">Prevention</a>
+      <a href="https://hpvca.org/cervical-cancer-treatment/">Cancer Treatment</a>
+      <a href="https://hpvca.org/hpv-on-the-ground/">News &amp; Resources</a>
+      <a href="https://hpvca.org/contact-us/">About Us</a>
+      <a href="https://donate.stripe.com/8x26oI9J63Gt53i2oma7C00" class="nav-donate">Donate</a>
+    </nav>
+    <button class="mobile-toggle" aria-label="Open menu">
+      <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+    </button>
+  </div>
+</header>
+
+<!-- Hero — Nielsen #8: Aesthetic & minimalist design -->
+<section class="hero" data-n>
+  <span class="nielsen">#8 Minimalist: Single stat, two clear CTAs</span>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-eyebrow">Education · Prevention · Advocacy</div>
+      <h1>
+        <span class="accent">1 million</span> cancers a year are preventable with the HPV vaccine.
+      </h1>
+      <p class="hero-sub">
+        HPV Cancers Alliance unites patients, caregivers, and providers to eliminate HPV-related cancers. Co-founded by survivors Lillian Kreppel and Marcia Cross.
+      </p>
+      <div class="hero-actions">
+        <a href="https://hpvca.org/stop-hpv-in-its-tracks/" class="btn btn-purple">How to Prevent HPV
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </a>
+        <a href="https://donate.stripe.com/8x26oI9J63Gt53i2oma7C00" class="btn btn-outline-purple">Donate to the Mission</a>
+      </div>
+    </div>
+
+    <div class="hero-stats">
+      <div class="stat-card featured">
+        <div class="stat-card-label">The HPV vaccine prevents</div>
+        <div class="stat-card-value">6 types of cancer</div>
+        <div class="stat-card-detail">Cervical · Anal · Vaginal · Vulvar · Penile · Head &amp; Neck</div>
+      </div>
+      <div class="stat-row">
+        <div class="stat-card">
+          <div class="stat-card-label">Annual deaths preventable</div>
+          <div class="stat-card-value">~500K</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-label">Share of world cancers</div>
+          <div class="stat-card-value">5%</div>
+          <div class="stat-card-detail">caused by HPV</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HPV Next Steps — Nielsen #7: Flexibility & efficiency -->
+<section class="tool-section" data-n>
+  <span class="nielsen">#7 Efficiency: Key tool promoted to position 2</span>
+  <div class="tool-inner">
+    <div>
+      <div class="section-badge">✦ Free Personalized Tool</div>
+      <h2 class="section-title">HPV Next Steps — Your Personalized Guide</h2>
+      <p class="section-desc">Answer 2–3 quick, anonymous questions and get tailored guidance on vaccination, screening, and next steps for your health.</p>
+      <ul class="steps-list">
+        <li><span class="step-dot">1</span> Enter your age and sex assigned at birth</li>
+        <li><span class="step-dot">2</span> Share your vaccination history</li>
+        <li><span class="step-dot">3</span> Get personalized prevention &amp; screening guidance</li>
+      </ul>
+      <a href="https://redcap.link/hpvnextsteps" class="btn btn-purple">Try HPV Next Steps
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+      </a>
+    </div>
+    <div class="tool-preview">
+      <div class="tool-preview-header">
+        <div class="tool-preview-icon">✦</div>
+        <div>
+          <div class="tool-preview-title">HPV Next Steps</div>
+          <div class="tool-preview-sub">Personalized screening guide</div>
+        </div>
+      </div>
+      <div class="mock-field">
+        <span class="mock-field-label">Your age</span>
+        <span class="mock-field-value">32</span>
+      </div>
+      <div class="mock-field">
+        <span class="mock-field-label">Sex assigned at birth</span>
+        <span class="mock-field-value">Female</span>
+      </div>
+      <div class="mock-field">
+        <span class="mock-field-label">Vaccinated?</span>
+        <span class="mock-field-value">Not sure</span>
+      </div>
+      <button class="mock-btn">Get My Results</button>
+    </div>
+  </div>
+</section>
+
+<!-- Understanding HPV — Nielsen #2: Real-world language -->
+<section class="info-section" data-n>
+  <span class="nielsen">#2 Real-world: Plain language, clear paths</span>
+  <div class="info-header">
+    <div class="section-badge">Learn</div>
+    <h2 class="section-title">Understanding HPV</h2>
+    <p class="section-desc">HPV is the most common STI — nearly all sexually active people get it. Most cases clear on their own, but some lead to cancer.</p>
+  </div>
+  <div class="info-grid">
+    <div class="info-card">
+      <div class="info-icon">🦠</div>
+      <h3>What is HPV?</h3>
+      <p>Human papillomavirus has 200+ strains. Most are harmless, but about 14 high-risk types can cause cancer if they don't clear naturally.</p>
+      <a href="https://hpvca.org/what-is-hpv/" class="card-link">Learn more </a>
+    </div>
+    <div class="info-card">
+      <div class="info-icon">🛡️</div>
+      <h3>Prevention &amp; Vaccination</h3>
+      <p>The HPV vaccine is safe, effective, and recommended for ages 9–26. Catch-up vaccination is available through age 45.</p>
+      <a href="https://hpvca.org/stop-hpv-in-its-tracks/" class="card-link">Stop HPV in its tracks </a>
+    </div>
+    <div class="info-card">
+      <div class="info-icon">🔬</div>
+      <h3>Screening &amp; Early Detection</h3>
+      <p>Regular screening catches HPV early, before it leads to cancer. Recommendations vary by age, sex, and risk factors.</p>
+      <a href="https://hpvca.org/screening/" class="card-link">Screening guidelines </a>
+    </div>
+  </div>
+</section>
+
+<!-- Survivor Story — Nielsen #8: Emotional hook without clutter -->
+<section class="story-section" data-n>
+  <span class="nielsen">#8 Minimalist: Emotional hook on homepage</span>
+  <div class="story-inner">
+    <div class="section-badge">Survivor Stories</div>
+    <div class="story-quote-mark">"</div>
+    <p class="story-quote">
+      I was diagnosed with anal cancer and felt completely alone. I couldn't find anyone talking about it openly. That's exactly why we started HPV Cancers Alliance — so no one has to navigate this alone.
+    </p>
+    <div class="story-author">
+      <div class="story-avatar">LK</div>
+      <div style="text-align:left;">
+        <div class="story-name">Lillian Kreppel</div>
+        <div class="story-role">Co-Founder &amp; CEO · Anal cancer survivor</div>
+      </div>
+    </div>
+    <a href="https://hpvca.org/survivor-stories/" class="btn btn-outline-purple btn-sm">Read More Survivor Stories</a>
+  </div>
+</section>
+
+<!-- Impact Stats — Nielsen #9: Help & documentation -->
+<section class="impact-section" data-n>
+  <span class="nielsen">#9 Help: Show impact to build donor trust</span>
+  <div class="impact-inner">
+    <div>
+      <div class="impact-num">6</div>
+      <div class="impact-label">Cancer types addressed</div>
+    </div>
+    <div>
+      <div class="impact-num">50+</div>
+      <div class="impact-label">Free educational resources</div>
+    </div>
+    <div>
+      <div class="impact-num">5</div>
+      <div class="impact-label">Emerging science webinar series</div>
+    </div>
+    <div>
+      <div class="impact-num">1st</div>
+      <div class="impact-label">Personalized HPV screening tool</div>
+    </div>
+  </div>
+</section>
+
+<!-- Event — Nielsen #4: Consistency (contained, not dominating) -->
+<section class="event-section" data-n>
+  <span class="nielsen">#4 Consistency: Event contained as card</span>
+  <div class="event-card">
+    <div>
+      <div class="event-date">📅 October 19, 2026</div>
+      <h3 class="event-title">HPVCA Soirée in the City</h3>
+      <p class="event-desc">Join us for an evening of community, celebration, and fundraising in support of HPV cancer prevention and education.</p>
+    </div>
+    <div class="event-cta">
+      <a href="https://hpvca.org/soiree-in-the-city/" class="btn btn-white">Learn More</a>
+    </div>
+  </div>
+</section>
+
+<!-- Newsletter — Nielsen #2: Set clear expectations -->
+<section class="newsletter-section" data-n>
+  <span class="nielsen">#2 Real-world: Clear value, not "nice to meet you"</span>
+  <div class="newsletter-inner">
+    <h2 class="section-title">Stay Informed</h2>
+    <p class="section-desc">One email a month with HPV research updates, prevention tips, and ways you can help.</p>
+    <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Subscribed! (This is a prototype)');">
+      <input type="email" class="newsletter-input" placeholder="Your email address" required aria-label="Email address">
+      <button type="submit" class="btn btn-purple btn-sm">Subscribe</button>
+    </form>
+    <p class="newsletter-note">No spam, ever. Join thousands of patients, caregivers, and providers.</p>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">HPV Cancers Alliance</div>
+      <p class="footer-tagline">A national nonprofit working to eliminate HPV-related cancers through education, prevention, and advocacy.</p>
+      <div class="footer-social">
+        <a href="https://www.facebook.com/HPVCancersAlliance/" aria-label="Facebook">f</a>
+        <a href="https://x.com/HPVAlliance" aria-label="X">𝕏</a>
+        <a href="https://www.instagram.com/hpvcancersalliance/" aria-label="Instagram">ig</a>
+        <a href="https://www.youtube.com/channel/UCSKX3c-w_57ZFpwyN0kaX4Q" aria-label="YouTube">▶</a>
+        <a href="https://www.linkedin.com/company/hpv-alliance/" aria-label="LinkedIn">in</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>About HPV</h4>
+      <a href="https://hpvca.org/what-is-hpv/">What is HPV?</a>
+      <a href="https://hpvca.org/myth-busters/">Myth Busters</a>
+      <a href="https://hpvca.org/high-risk-hpv/">After Diagnosis</a>
+      <a href="https://hpvca.org/how-to-talk-to-your-loved-ones-about-hpv/">Talk to Loved Ones</a>
+    </div>
+    <div class="footer-col">
+      <h4>Prevention</h4>
+      <a href="https://hpvca.org/stop-hpv-in-its-tracks/">HPV Vaccination</a>
+      <a href="https://hpvca.org/screening/">Screening</a>
+      <a href="https://redcap.link/hpvnextsteps">HPV Next Steps Tool</a>
+      <a href="https://hpvca.org/the-anchor-study/">ANCHOR Study</a>
+    </div>
+    <div class="footer-col">
+      <h4>Get Involved</h4>
+      <a href="https://donate.stripe.com/8x26oI9J63Gt53i2oma7C00">Donate</a>
+      <a href="https://hpvca.org/survivor-stories/">Survivor Stories</a>
+      <a href="https://hpvca.org/soiree-in-the-city/">Soirée in the City</a>
+      <a href="https://hpvca.org/contact-us/">Contact Us</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 HPV Cancers Alliance · PO Box 23075, New York, NY 10023</span>
+    <a href="https://hpvca.org/privacy-policy/">Privacy Policy</a>
+  </div>
+</footer>
+
+<!-- Nielsen Toggle -->
+<button class="annotations-btn" onclick="document.body.classList.toggle('show-notes'); this.innerHTML = document.body.classList.contains('show-notes') ? '✕ Hide Nielsen Notes' : '📐 Show Nielsen Notes'">
+  📐 Show Nielsen Notes
+</button>
+
+</body>
+</html>
