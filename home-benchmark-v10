@@ -1,0 +1,1169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HPV Cancers Alliance — Preventing HPV-Related Cancers</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  /*
+    ROBIN HOOD DESIGN LANGUAGE adapted for HPVCA:
+    - Bold oversized sans-serif headlines (Outfit 800/900)
+    - Contrasting serif italic for editorial secondary heads (Instrument Serif)
+    - Full-bleed hero sections with large type
+    - Dynamic color: purple guides action, lavender for atmosphere
+    - Story-forward editorial card grid
+    - Big stat callouts (Robin Hood's "$3B" pattern)
+    - Clean alternating sections, generous white space
+    - Bottom triple CTA cards
+    - Minimal navigation, prominent Donate
+  */
+
+  :root {
+    /* HPVCA Brand */
+    --purple-deep: #3A1057;
+    --purple: #5E2585;
+    --purple-mid: #7B3BA8;
+    --purple-light: #A06AC4;
+    --lavender: #C9A4E2;
+    --lavender-soft: #E8D5F5;
+    --lavender-bg: #F5EEFB;
+    --lavender-faint: #FAF7FD;
+
+    /* Neutrals */
+    --white: #FFFFFF;
+    --gray-50: #FAFAFB;
+    --gray-100: #F4F3F6;
+    --gray-200: #E8E6EC;
+    --gray-300: #D0CDD6;
+    --gray-400: #9E99A7;
+    --gray-500: #6E6878;
+    --gray-700: #3D3748;
+    --gray-900: #1A1522;
+    --black: #0E0A14;
+
+    /* Accent */
+    --green-accent: #4ADE80;
+
+    /* Fonts - Robin Hood pattern: bold sans + contrasting serif */
+    --sans: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+    --serif: 'Instrument Serif', Georgia, serif;
+
+    /* System */
+    --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --radius: 0px; /* Robin Hood uses sharp corners */
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    color: var(--gray-900);
+    background: var(--white);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { text-decoration: none; color: inherit; }
+
+  /* ===========================
+     NAV — Robin Hood style: minimal, logo left, links + donate right
+     =========================== */
+  .nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 0 40px;
+    height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: background 0.4s ease, box-shadow 0.4s ease;
+  }
+  .nav.scrolled {
+    background: rgba(255,255,255,0.97);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 1px 0 var(--gray-200);
+  }
+  .nav-logo {
+    font-family: var(--sans);
+    font-weight: 800;
+    font-size: 1.15rem;
+    color: var(--white);
+    letter-spacing: -0.02em;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: var(--transition);
+  }
+  .nav.scrolled .nav-logo { color: var(--gray-900); }
+  .nav-logo-mark {
+    width: 32px;
+    height: 32px;
+    background: var(--purple);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 900;
+    font-size: 0.85rem;
+  }
+  .nav-links { display: flex; align-items: center; gap: 4px; }
+  .nav-links a {
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: rgba(255,255,255,0.75);
+    padding: 8px 16px;
+    border-radius: 6px;
+    transition: var(--transition);
+  }
+  .nav-links a:hover { color: white; background: rgba(255,255,255,0.1); }
+  .nav.scrolled .nav-links a { color: var(--gray-500); }
+  .nav.scrolled .nav-links a:hover { color: var(--gray-900); background: var(--gray-100); }
+  .nav-donate {
+    background: var(--purple) !important;
+    color: white !important;
+    font-weight: 600 !important;
+    padding: 10px 24px !important;
+    border-radius: 50px !important;
+    margin-left: 8px;
+  }
+  .nav-donate:hover { background: var(--purple-deep) !important; }
+  .mobile-nav { display: none; background: none; border: none; cursor: pointer; padding: 6px; }
+  .mobile-nav svg { width: 24px; height: 24px; }
+  .mobile-nav .bar { fill: white; transition: var(--transition); }
+  .nav.scrolled .mobile-nav .bar { fill: var(--gray-900); }
+
+  /* ===========================
+     HERO — Robin Hood: full-bleed, massive type, video/gradient bg
+     =========================== */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-end;
+    padding: 0 40px 80px;
+    position: relative;
+    overflow: hidden;
+    background: var(--black);
+  }
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(180deg, rgba(14,10,20,0.2) 0%, rgba(14,10,20,0.55) 50%, rgba(14,10,20,0.92) 100%),
+      linear-gradient(135deg, var(--purple-deep) 0%, var(--purple) 30%, var(--purple-mid) 60%, var(--lavender) 100%);
+    background-size: cover;
+  }
+  /* Animated gradient orbs for atmosphere */
+  .hero-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.35;
+    animation: float 12s ease-in-out infinite;
+  }
+  .hero-orb-1 {
+    width: 500px; height: 500px;
+    background: var(--purple);
+    top: 10%; left: -5%;
+    animation-delay: 0s;
+  }
+  .hero-orb-2 {
+    width: 400px; height: 400px;
+    background: var(--lavender);
+    top: 30%; right: 5%;
+    animation-delay: -4s;
+  }
+  .hero-orb-3 {
+    width: 300px; height: 300px;
+    background: var(--purple-mid);
+    bottom: 10%; left: 40%;
+    animation-delay: -8s;
+  }
+  @keyframes float {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(30px, -20px) scale(1.05); }
+    66% { transform: translate(-20px, 15px) scale(0.95); }
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+    color: white;
+  }
+  .hero h1 {
+    font-family: var(--sans);
+    font-size: clamp(3.2rem, 7vw, 6rem);
+    font-weight: 900;
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+    margin-bottom: 28px;
+    text-transform: uppercase;
+  }
+  .hero-subtitle {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: clamp(1.15rem, 2vw, 1.5rem);
+    line-height: 1.55;
+    color: rgba(255,255,255,0.75);
+    max-width: 600px;
+    margin-bottom: 40px;
+    font-weight: 400;
+  }
+  .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--white);
+    color: var(--purple-deep);
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: 1rem;
+    padding: 16px 32px;
+    border-radius: 0;
+    border: none;
+    cursor: pointer;
+    transition: var(--transition);
+    letter-spacing: 0.01em;
+  }
+  .hero-cta:hover { background: var(--lavender-soft); transform: translateY(-2px); }
+  .hero-cta svg { width: 18px; height: 18px; transition: var(--transition); }
+  .hero-cta:hover svg { transform: translateX(3px); }
+
+  /* ===========================
+     NEWS / EDITORIAL CARDS — Robin Hood pattern
+     =========================== */
+  .news-section {
+    padding: 100px 40px 80px;
+    background: var(--white);
+  }
+  .section-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 48px;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .section-label {
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--purple);
+    margin-bottom: 8px;
+  }
+  .section-h2 {
+    font-family: var(--sans);
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    color: var(--gray-900);
+    text-transform: uppercase;
+  }
+  .section-link {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--purple);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: var(--transition);
+    white-space: nowrap;
+  }
+  .section-link:hover { gap: 10px; }
+  .section-link::after { content: '→'; }
+
+  .news-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .news-card {
+    background: var(--gray-50);
+    overflow: hidden;
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+  }
+  .news-card:hover { background: var(--lavender-bg); }
+  .news-card:hover .news-img img { transform: scale(1.03); }
+  .news-card.featured {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+  }
+  .news-img {
+    overflow: hidden;
+    aspect-ratio: 16/10;
+    background: var(--lavender-soft);
+    position: relative;
+  }
+  .news-card.featured .news-img { aspect-ratio: auto; min-height: 380px; }
+  .news-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+  }
+  /* Placeholder images with purple gradient */
+  .news-img-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    color: var(--purple-light);
+  }
+  .news-body { padding: 32px; display: flex; flex-direction: column; justify-content: center; }
+  .news-card.featured .news-body { padding: 44px; }
+  .news-tag {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--purple);
+    margin-bottom: 12px;
+  }
+  .news-title {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1.3rem;
+    line-height: 1.35;
+    color: var(--gray-900);
+    font-weight: 400;
+  }
+  .news-card.featured .news-title { font-size: 1.7rem; }
+
+  /* ===========================
+     BIG STATS — Robin Hood's "$3B" pattern
+     =========================== */
+  .stats-section {
+    padding: 100px 40px;
+    background: var(--purple-deep);
+    color: white;
+    position: relative;
+    overflow: hidden;
+  }
+  .stats-section::before {
+    content: '';
+    position: absolute;
+    top: -200px;
+    right: -100px;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(160,106,196,0.2), transparent 70%);
+    border-radius: 50%;
+  }
+  .stats-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+  .stats-intro {
+    max-width: 650px;
+    margin-bottom: 64px;
+  }
+  .stats-intro .section-label { color: var(--lavender); }
+  .stats-intro h2 {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: clamp(1.4rem, 2.5vw, 2rem);
+    font-weight: 400;
+    line-height: 1.45;
+    color: rgba(255,255,255,0.8);
+  }
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+  }
+  .stat-item { border-top: 1px solid rgba(255,255,255,0.12); padding-top: 28px; }
+  .stat-number {
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+    margin-bottom: 8px;
+  }
+  .stat-big {
+    font-family: var(--sans);
+    font-size: clamp(3.5rem, 6vw, 5.5rem);
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    color: white;
+  }
+  .stat-suffix {
+    font-family: var(--sans);
+    font-size: clamp(1.5rem, 2.5vw, 2.2rem);
+    font-weight: 800;
+    color: var(--lavender);
+  }
+  .stat-desc {
+    font-size: 0.95rem;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.5;
+  }
+
+  /* ===========================
+     TOOL FEATURE — editorial split (Robin Hood's program pattern)
+     =========================== */
+  .feature-section {
+    padding: 0;
+    background: var(--white);
+  }
+  .feature-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 560px;
+  }
+  .feature-visual {
+    background: linear-gradient(160deg, var(--lavender-bg) 0%, var(--lavender-soft) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px;
+    position: relative;
+    overflow: hidden;
+  }
+  .feature-visual::before {
+    content: '';
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, var(--lavender) 0%, transparent 70%);
+    border-radius: 50%;
+    opacity: 0.3;
+    top: 20%;
+    left: -10%;
+  }
+  .feature-mockup {
+    background: var(--white);
+    padding: 36px;
+    width: 100%;
+    max-width: 360px;
+    box-shadow: 0 20px 60px rgba(58,16,87,0.12);
+    position: relative;
+    z-index: 1;
+  }
+  .feature-mockup-head {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--gray-200);
+  }
+  .feature-mockup-icon {
+    width: 44px;
+    height: 44px;
+    background: var(--purple);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 800;
+  }
+  .feature-mockup-label { font-weight: 700; font-size: 1rem; color: var(--gray-900); }
+  .feature-mockup-sub { font-size: 0.78rem; color: var(--gray-400); }
+  .mock-row {
+    background: var(--gray-100);
+    padding: 14px 18px;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.88rem;
+  }
+  .mock-row-label { color: var(--gray-400); }
+  .mock-row-val { color: var(--purple); font-weight: 600; }
+  .mock-submit {
+    width: 100%;
+    background: var(--purple);
+    color: white;
+    border: none;
+    padding: 15px;
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: 0.92rem;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: var(--transition);
+    letter-spacing: 0.02em;
+  }
+  .mock-submit:hover { background: var(--purple-deep); }
+
+  .feature-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 60px;
+  }
+  .feature-text .section-label { margin-bottom: 12px; }
+  .feature-text h2 {
+    font-family: var(--sans);
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+    color: var(--gray-900);
+    margin-bottom: 20px;
+  }
+  .feature-text p {
+    font-size: 1rem;
+    color: var(--gray-500);
+    line-height: 1.7;
+    margin-bottom: 28px;
+    max-width: 440px;
+  }
+  .feature-steps {
+    list-style: none;
+    margin-bottom: 36px;
+  }
+  .feature-steps li {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 10px 0;
+    font-size: 0.92rem;
+    color: var(--gray-700);
+    border-bottom: 1px solid var(--gray-200);
+  }
+  .feature-steps li:last-child { border-bottom: none; }
+  .step-n {
+    width: 28px;
+    height: 28px;
+    min-width: 28px;
+    background: var(--purple);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+  }
+  .btn-rh {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--purple);
+    color: white;
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: 0.95rem;
+    padding: 15px 30px;
+    border: none;
+    cursor: pointer;
+    transition: var(--transition);
+    letter-spacing: 0.01em;
+  }
+  .btn-rh:hover { background: var(--purple-deep); }
+  .btn-rh svg { width: 16px; height: 16px; transition: var(--transition); }
+  .btn-rh:hover svg { transform: translateX(3px); }
+
+  /* ===========================
+     SURVIVOR / QUOTE — Robin Hood storytelling block
+     =========================== */
+  .story-section {
+    padding: 100px 40px;
+    background: var(--gray-50);
+  }
+  .story-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+  .story-quote-col {}
+  .story-mark {
+    font-family: var(--serif);
+    font-size: 8rem;
+    line-height: 0.7;
+    color: var(--lavender);
+    margin-bottom: 12px;
+  }
+  .story-avatar-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    min-width: 120px;
+  }
+  .story-av {
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(135deg, var(--purple-light), var(--lavender));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 800;
+    font-size: 1.5rem;
+  }
+  .story-av-name {
+    font-weight: 700;
+    font-size: 0.88rem;
+    color: var(--gray-900);
+    text-align: center;
+  }
+  .story-av-role {
+    font-size: 0.78rem;
+    color: var(--gray-400);
+    text-align: center;
+    line-height: 1.3;
+  }
+  .story-blockquote {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: clamp(1.3rem, 2.2vw, 1.8rem);
+    line-height: 1.5;
+    color: var(--gray-900);
+    margin-bottom: 28px;
+  }
+  .story-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    color: var(--purple);
+    font-size: 0.9rem;
+    transition: var(--transition);
+  }
+  .story-cta:hover { gap: 12px; }
+  .story-cta::after { content: '→'; }
+
+  /* ===========================
+     DONATE BANNER — Robin Hood "100% of your donation" pattern
+     =========================== */
+  .donate-section {
+    background: var(--purple);
+    padding: 64px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .donate-inner {
+    max-width: 800px;
+    text-align: center;
+    color: white;
+  }
+  .donate-inner h2 {
+    font-family: var(--sans);
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -0.03em;
+    margin-bottom: 14px;
+    line-height: 1.05;
+  }
+  .donate-inner p {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 32px;
+    line-height: 1.5;
+  }
+  .btn-white-rh {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--white);
+    color: var(--purple-deep);
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: 1rem;
+    padding: 16px 36px;
+    border: none;
+    cursor: pointer;
+    transition: var(--transition);
+  }
+  .btn-white-rh:hover { background: var(--lavender-faint); transform: translateY(-2px); }
+
+  /* ===========================
+     TRIPLE CTA — Robin Hood bottom cards
+     =========================== */
+  .triple-cta {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    background: var(--white);
+  }
+  .triple-card {
+    padding: 48px 40px;
+    border-right: 1px solid var(--gray-200);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    transition: var(--transition);
+    cursor: pointer;
+  }
+  .triple-card:last-child { border-right: none; }
+  .triple-card:hover { background: var(--lavender-bg); }
+  .triple-card h3 {
+    font-family: var(--sans);
+    font-size: 1.15rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    color: var(--gray-900);
+  }
+  .triple-arrow {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    background: var(--purple);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.1rem;
+    transition: var(--transition);
+  }
+  .triple-card:hover .triple-arrow { background: var(--purple-deep); transform: translateX(3px); }
+
+  /* ===========================
+     FOOTER — Robin Hood clean footer
+     =========================== */
+  footer {
+    background: var(--black);
+    color: white;
+    padding: 60px 40px 32px;
+  }
+  .footer-top {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 48px;
+    margin-bottom: 48px;
+  }
+  .footer-brand {
+    font-weight: 800;
+    font-size: 1.1rem;
+    margin-bottom: 14px;
+    letter-spacing: -0.01em;
+  }
+  .footer-tagline {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 0.92rem;
+    opacity: 0.45;
+    line-height: 1.55;
+    margin-bottom: 24px;
+  }
+  .footer-social { display: flex; gap: 8px; }
+  .footer-social a {
+    width: 36px;
+    height: 36px;
+    background: rgba(255,255,255,0.06);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255,255,255,0.5);
+    font-size: 0.82rem;
+    transition: var(--transition);
+  }
+  .footer-social a:hover { background: var(--purple); color: white; }
+  .footer-col h4 {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    opacity: 0.3;
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+  .footer-col a {
+    display: block;
+    font-size: 0.88rem;
+    opacity: 0.55;
+    margin-bottom: 10px;
+    transition: var(--transition);
+  }
+  .footer-col a:hover { opacity: 1; }
+
+  /* Newsletter in footer — Robin Hood style */
+  .footer-newsletter {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-top: 36px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .footer-nl-text {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1rem;
+    opacity: 0.6;
+  }
+  .footer-nl-form { display: flex; gap: 0; }
+  .footer-nl-input {
+    padding: 12px 18px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: white;
+    font-family: var(--sans);
+    font-size: 0.88rem;
+    outline: none;
+    width: 260px;
+    transition: var(--transition);
+  }
+  .footer-nl-input::placeholder { color: rgba(255,255,255,0.25); }
+  .footer-nl-input:focus { border-color: var(--purple-light); background: rgba(255,255,255,0.1); }
+  .footer-nl-btn {
+    background: var(--purple);
+    color: white;
+    border: none;
+    padding: 12px 22px;
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: var(--transition);
+  }
+  .footer-nl-btn:hover { background: var(--purple-mid); }
+
+  .footer-bottom {
+    max-width: 1200px;
+    margin: 32px auto 0;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    opacity: 0.25;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .footer-bottom a { color: white; text-decoration: underline; text-underline-offset: 2px; }
+
+  /* ===========================
+     RESPONSIVE
+     =========================== */
+  @media (max-width: 900px) {
+    .nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    .mobile-nav { display: block; }
+    .hero { padding: 0 20px 60px; min-height: 85vh; }
+    .hero h1 { font-size: 2.6rem; }
+    .news-grid { grid-template-columns: 1fr; }
+    .news-card.featured { grid-template-columns: 1fr; }
+    .news-card.featured .news-img { min-height: 240px; }
+    .stats-grid { grid-template-columns: 1fr; gap: 28px; }
+    .feature-split { grid-template-columns: 1fr; }
+    .feature-visual { min-height: 320px; padding: 40px; }
+    .feature-text { padding: 48px 24px; }
+    .story-inner { grid-template-columns: 1fr; gap: 24px; }
+    .story-avatar-block { flex-direction: row; align-items: center; }
+    .triple-cta { grid-template-columns: 1fr; }
+    .triple-card { border-right: none; border-bottom: 1px solid var(--gray-200); }
+    .footer-top { grid-template-columns: 1fr 1fr; }
+    .footer-newsletter { flex-direction: column; align-items: flex-start; }
+    .footer-bottom { flex-direction: column; }
+    .news-section, .stats-section, .story-section { padding: 60px 20px; }
+    .section-header { flex-direction: column; align-items: flex-start; gap: 12px; }
+  }
+  @media (max-width: 500px) {
+    .footer-top { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 2.1rem; }
+  }
+
+  /* Animations */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero-content > * { animation: fadeUp 0.8s ease-out both; }
+  .hero-content > *:nth-child(2) { animation-delay: 0.15s; }
+  .hero-content > *:nth-child(3) { animation-delay: 0.3s; }
+</style>
+</head>
+<body>
+
+<!-- Nav — Robin Hood: transparent on hero, solid on scroll -->
+<nav class="nav" id="mainNav">
+  <a href="https://hpvca.org" class="nav-logo">
+    <span class="nav-logo-mark">H</span>
+    HPV Cancers Alliance
+  </a>
+  <div class="nav-links">
+    <a href="https://hpvca.org/what-is-hpv/">About HPV</a>
+    <a href="https://hpvca.org/stop-hpv-in-its-tracks/">Prevention</a>
+    <a href="https://hpvca.org/cervical-cancer-treatment/">Cancer Treatment</a>
+    <a href="https://hpvca.org/hpv-on-the-ground/">News</a>
+    <a href="https://hpvca.org/contact-us/">About</a>
+    <a href="https://donate.stripe.com/8x26oI9J63Gt53i2oma7C00" class="nav-donate">Donate</a>
+  </div>
+  <button class="mobile-nav" aria-label="Menu">
+    <svg viewBox="0 0 24 24" fill="none"><rect class="bar" x="3" y="5" width="18" height="2" rx="1"/><rect class="bar" x="3" y="11" width="18" height="2" rx="1"/><rect class="bar" x="3" y="17" width="18" height="2" rx="1"/></svg>
+  </button>
+</nav>
+
+<!-- Hero — Full-bleed, massive type, Robin Hood style -->
+<section class="hero">
+  <div class="hero-bg">
+    <div class="hero-orb hero-orb-1"></div>
+    <div class="hero-orb hero-orb-2"></div>
+    <div class="hero-orb hero-orb-3"></div>
+  </div>
+  <div class="hero-content">
+    <h1>Fighting HPV&mdash;Related Cancer</h1>
+    <p class="hero-subtitle">
+      If everyone received the HPV vaccine, we could eliminate 5% of the world's cancers. That's 1 million diagnoses and nearly 500,000 deaths prevented every year.
+    </p>
+    <a href="https://hpvca.org/stop-hpv-in-its-tracks/" class="hero-cta">
+      Our Work
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- News & Highlights — Editorial card grid -->
+<section class="news-section">
+  <div class="section-header">
+    <div>
+      <div class="section-label">News &amp; Highlights</div>
+      <h2 class="section-h2">Latest from HPVCA</h2>
+    </div>
+    <a href="https://hpvca.org/hpv-on-the-ground/" class="section-link">See All </a>
+  </div>
+  <div class="news-grid">
+    <a href="https://hpvca.org/emerging-science-webinar-series/" class="news-card featured">
+      <div class="news-img">
+        <div class="news-img-placeholder" style="background: linear-gradient(135deg, var(--lavender-soft) 0%, var(--lavender-bg) 100%);">🔬</div>
+      </div>
+      <div class="news-body">
+        <div class="news-tag">Webinar Series</div>
+        <h3 class="news-title">Emerging Science Webinar Series — leading researchers discuss new developments in HPV prevention and treatment.</h3>
+      </div>
+    </a>
+    <a href="https://hpvca.org/lgbtqia-health/" class="news-card">
+      <div class="news-img">
+        <div class="news-img-placeholder" style="background: linear-gradient(135deg, #E8D5F5 0%, #F5EEFB 100%);">🏳️‍🌈</div>
+      </div>
+      <div class="news-body">
+        <div class="news-tag">Health Equity</div>
+        <h3 class="news-title">LGBTQIA+ Health — addressing disparities in HPV screening and vaccination access.</h3>
+      </div>
+    </a>
+    <a href="https://hpvca.org/legislative-action-hub/" class="news-card">
+      <div class="news-img">
+        <div class="news-img-placeholder" style="background: linear-gradient(135deg, #C9A4E2 0%, #E8D5F5 100%);">⚖️</div>
+      </div>
+      <div class="news-body">
+        <div class="news-tag">Advocacy</div>
+        <h3 class="news-title">Legislative Action Hub — track HPV-related legislation and make your voice heard.</h3>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- Stats — Robin Hood's signature big-number treatment -->
+<section class="stats-section">
+  <div class="stats-inner">
+    <div class="stats-intro">
+      <div class="section-label">Research &amp; Impact</div>
+      <h2>Informed by evidence and the lived experiences of survivors, HPVCA educates, prevents, and advocates to eliminate HPV-related cancers.</h2>
+    </div>
+    <div class="stats-grid">
+      <div class="stat-item">
+        <div class="stat-number">
+          <span class="stat-big">6</span>
+        </div>
+        <div class="stat-desc">Types of cancer prevented by HPV vaccination — cervical, anal, vaginal, vulvar, penile, and head &amp; neck</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">
+          <span class="stat-big">500</span>
+          <span class="stat-suffix">K</span>
+        </div>
+        <div class="stat-desc">Deaths from HPV-related cancers preventable every year worldwide through vaccination</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">
+          <span class="stat-big">5</span>
+          <span class="stat-suffix">%</span>
+        </div>
+        <div class="stat-desc">Of all cancers worldwide are caused by HPV — and are potentially eliminable</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HPV Next Steps Tool — Robin Hood feature/program split -->
+<section class="feature-section">
+  <div class="feature-split">
+    <div class="feature-visual">
+      <div class="feature-mockup">
+        <div class="feature-mockup-head">
+          <div class="feature-mockup-icon">✦</div>
+          <div>
+            <div class="feature-mockup-label">HPV Next Steps</div>
+            <div class="feature-mockup-sub">Personalized screening guide</div>
+          </div>
+        </div>
+        <div class="mock-row">
+          <span class="mock-row-label">Your age</span>
+          <span class="mock-row-val">32</span>
+        </div>
+        <div class="mock-row">
+          <span class="mock-row-label">Sex assigned at birth</span>
+          <span class="mock-row-val">Female</span>
+        </div>
+        <div class="mock-row">
+          <span class="mock-row-label">Vaccinated?</span>
+          <span class="mock-row-val">Not sure</span>
+        </div>
+        <button class="mock-submit">Get My Results</button>
+      </div>
+    </div>
+    <div class="feature-text">
+      <div class="section-label">Free Personalized Tool</div>
+      <h2>HPV Next Steps</h2>
+      <p>A first-of-its-kind guide to HPV prevention and care. Answer 2–3 quick, anonymous questions and get tailored guidance on vaccination, screening, and what to do next.</p>
+      <ul class="feature-steps">
+        <li><span class="step-n">1</span> Enter your age and sex assigned at birth</li>
+        <li><span class="step-n">2</span> Share your vaccination history</li>
+        <li><span class="step-n">3</span> Get personalized prevention guidance</li>
+      </ul>
+      <a href="https://redcap.link/hpvnextsteps" class="btn-rh">
+        Try HPV Next Steps
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Survivor Quote — Robin Hood storytelling -->
+<section class="story-section">
+  <div class="story-inner">
+    <div class="story-avatar-block">
+      <div class="story-av">LK</div>
+      <div class="story-av-name">Lillian Kreppel</div>
+      <div class="story-av-role">Co-Founder &amp; CEO<br>Anal cancer survivor</div>
+    </div>
+    <div class="story-quote-col">
+      <div class="story-mark">"</div>
+      <blockquote class="story-blockquote">
+        I was diagnosed with anal cancer and felt completely alone. I couldn't find anyone talking about it openly. That's exactly why we started HPV Cancers Alliance — so no one has to navigate this alone.
+      </blockquote>
+      <a href="https://hpvca.org/survivor-stories/" class="story-cta">Read More Survivor Stories </a>
+    </div>
+  </div>
+</section>
+
+<!-- Donate Banner — Robin Hood "100% goes to the fight" -->
+<section class="donate-section">
+  <div class="donate-inner">
+    <h2>Donate to HPV<br>Cancers Alliance</h2>
+    <p>Your donation is a step toward a world without HPV-related cancers — funding education, prevention tools, and advocacy.</p>
+    <a href="https://donate.stripe.com/8x26oI9J63Gt53i2oma7C00" class="btn-white-rh">
+      Donate Now
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- Triple CTA — Robin Hood bottom action cards -->
+<div class="triple-cta">
+  <a href="https://hpvca.org/what-is-hpv/" class="triple-card">
+    <h3>Learn About HPV</h3>
+    <span class="triple-arrow">→</span>
+  </a>
+  <a href="https://hpvca.org/survivor-stories/" class="triple-card">
+    <h3>Survivor Stories</h3>
+    <span class="triple-arrow">→</span>
+  </a>
+  <a href="https://hpvca.org/soiree-in-the-city/" class="triple-card">
+    <h3>Soirée in the City — Oct 19</h3>
+    <span class="triple-arrow">→</span>
+  </a>
+</div>
+
+<!-- Footer — Robin Hood clean layout -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-brand">HPV Cancers Alliance</div>
+      <p class="footer-tagline">A national nonprofit working to eliminate HPV-related cancers through education, prevention, and advocacy.</p>
+      <div class="footer-social">
+        <a href="https://www.facebook.com/HPVCancersAlliance/" aria-label="Facebook">f</a>
+        <a href="https://x.com/HPVAlliance" aria-label="X">𝕏</a>
+        <a href="https://www.instagram.com/hpvcancersalliance/" aria-label="Instagram">ig</a>
+        <a href="https://www.youtube.com/channel/UCSKX3c-w_57ZFpwyN0kaX4Q" aria-label="YouTube">▶</a>
+        <a href="https://www.linkedin.com/company/hpv-alliance/" aria-label="LinkedIn">in</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>About HPV</h4>
+      <a href="https://hpvca.org/what-is-hpv/">What is HPV?</a>
+      <a href="https://hpvca.org/myth-busters/">Myth Busters</a>
+      <a href="https://hpvca.org/high-risk-hpv/">After Diagnosis</a>
+      <a href="https://hpvca.org/how-to-talk-to-your-loved-ones-about-hpv/">Talk to Loved Ones</a>
+    </div>
+    <div class="footer-col">
+      <h4>Prevention</h4>
+      <a href="https://hpvca.org/stop-hpv-in-its-tracks/">HPV Vaccination</a>
+      <a href="https://hpvca.org/screening/">Screening</a>
+      <a href="https://redcap.link/hpvnextsteps">HPV Next Steps Tool</a>
+      <a href="https://hpvca.org/the-anchor-study/">ANCHOR Study</a>
+    </div>
+    <div class="footer-col">
+      <h4>Get Involved</h4>
+      <a href="https://donate.stripe.com/8x26oI9J63Gt53i2oma7C00">Donate</a>
+      <a href="https://hpvca.org/survivor-stories/">Survivor Stories</a>
+      <a href="https://hpvca.org/soiree-in-the-city/">Soirée in the City</a>
+      <a href="https://hpvca.org/contact-us/">Contact Us</a>
+    </div>
+  </div>
+
+  <div class="footer-newsletter">
+    <div class="footer-nl-text">Stay informed with the latest HPV research and events.</div>
+    <form class="footer-nl-form" onsubmit="event.preventDefault(); alert('Subscribed! (Prototype)');">
+      <input type="email" class="footer-nl-input" placeholder="Your email address" required aria-label="Email">
+      <button type="submit" class="footer-nl-btn">Subscribe</button>
+    </form>
+  </div>
+
+  <div class="footer-bottom">
+    <span>© 2025 HPV Cancers Alliance · PO Box 23075, New York, NY 10023</span>
+    <span><a href="https://hpvca.org/privacy-policy/">Privacy Policy</a></span>
+  </div>
+</footer>
+
+<!-- Scroll behavior for nav -->
+<script>
+  const nav = document.getElementById('mainNav');
+  let lastScroll = 0;
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 60) {
+      nav.classList.add('scrolled');
+    } else {
+      nav.classList.remove('scrolled');
+    }
+  }, { passive: true });
+</script>
+
+</body>
+</html>
